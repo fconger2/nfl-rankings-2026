@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 NFL Rankings</title>
+<meta name="description" content="QB, RB, WR and defense rankings for the 2026 NFL season from advanced stats, with award-odds ladders. Updated every Tuesday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-anthropic-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-anthropic-serif: "Source Serif 4", Georgia, serif;
+    --color-bg: #faf9f7; --color-panel: #ffffff; --color-fg: #1f1e1c; --color-fg-muted: #6b6862;
+    --color-border-line: #e6e3de; --color-ok: #2f7d4f; --color-bad: #b4442f;
+    --cds-text-secondary: #6b6862; --cds-border: #e6e3de; --cds-surface-popover: #ffffff;
+    --cds-shadow-popover: 0 4px 16px rgba(0,0,0,.10);
+    --cds-chart-axis: #cfcbc4; --cds-chart-muted: #d9d5ce; --cds-chart-reference: #a8a39b; --cds-chart-status-critical: #c6533c;
+    --cds-font-size-caption: 0.8125rem; --cds-font-size-body: 0.9375rem; --cds-font-size-heading: 1.0625rem; --cds-font-size-title: 2rem;
+    --cds-font-weight-medium: 500;
+    --cds-gap-xs: 0.25rem; --cds-gap-sm: 0.5rem; --cds-gap-md: 1rem; --cds-gap-lg: 1.5rem;
+    --cds-pad-xs: 0.25rem; --cds-pad-sm: 0.5rem; --cds-pad-lg: 1.25rem;
+    --cds-radius: 8px; --cds-dur-slow: 300ms;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --color-bg: #191817; --color-panel: #222120; --color-fg: #ecebe8; --color-fg-muted: #a19e97;
+      --color-border-line: #353330; --color-ok: #6cc28c; --color-bad: #ec8a74;
+      --cds-text-secondary: #a19e97; --cds-border: #3a3835; --cds-surface-popover: #2a2927;
+      --cds-shadow-popover: 0 4px 16px rgba(0,0,0,.5);
+      --cds-chart-axis: #4a4744; --cds-chart-muted: #45423e; --cds-chart-reference: #77736c; --cds-chart-status-critical: #e0705a;
+    }
+  }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); }
+  #dash-root { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+  .site-foot { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-lg); }
+  .site-foot a { color: inherit; }
+</style>
+<script src="site/d3.v7.9.0.min.js"></script>
+<script>
+/* Minimal stand-in for the claude.ai dashboard runtime: loads data/dashboard/<id>.csv for each dataset id. */
+(function () {
+  const ids = /*IDS*/[];
+  const store = {};
+  const drawers = {};
+  const listeners = [];
+  ids.forEach((id) => { store[id] = { status: 'loading', data: [], columns: [], message: '', refreshing: false, meta: [] }; });
+  const light = ['#c96442', '#3f7cac', '#7a9a4a', '#a35d9e', '#d19a2e', '#3a9a94', '#8c6d52', '#6b7280'];
+  const dark = ['#e08a6a', '#6ea6d4', '#a3c26f', '#c78bc2', '#e7b553', '#5fc0b9', '#b8987b', '#9ca3af'];
+  const isDark = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  function runDraw(name) {
+    const fn = drawers[name];
+    if (!fn) return;
+    document.querySelectorAll(`[data-draw="${name}"]`).forEach((el) => { try { fn(el); } catch (e) { console.error(name, e); } });
+  }
+  function redrawAll() {
+    listeners.forEach((fn) => { try { fn(); } catch (e) { console.error(e); } });
+    Object.keys(drawers).forEach(runDraw);
+  }
+  window.dash = {
+    get colors() { return isDark() ? dark : light; },
+    data: (id) => store[id] || { status: 'missing', data: [], columns: [], message: '', refreshing: false, meta: [] },
+    draw(name, fn) { if (fn) { drawers[name] = fn; if (loaded) runDraw(name); } else runDraw(name); },
+    onData(fn) { listeners.push(fn); fn(); },
+    setLink(name) { history.replaceState(null, '', '#' + name); requestAnimationFrame(redrawAll); },
+    refresh() {}, params: () => ({}), setParams() {}, resetParams() {},
+    calc() {}, loader() {},
+  };
+  let loaded = false;
+  Promise.all(ids.map((id) => fetch(`data/dashboard/${id}.csv`, { cache: 'no-cache' })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then((t) => { const rows = d3.csvParse(t); store[id] = { status: 'ok', data: rows, columns: rows.columns, message: '', refreshing: false, meta: [] }; })
+    .catch((e) => { store[id] = { status: 'error', data: [], columns: [], message: String(e), refreshing: false, meta: [] }; })))
+    .then(() => { loaded = true; redrawAll(); });
+  let w = window.innerWidth;
+  window.addEventListener('resize', () => { if (window.innerWidth !== w) { w = window.innerWidth; redrawAll(); } });
+  if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+})();
+</script>
+</head>
+<body>
+<div id="dash-root">
+<!--PAGE-->
+<p class="site-foot">Updated every Tuesday from nflverse play-by-play, sportsbook odds and Kalshi. Code and method: <a href="https://github.com/fconger2/nfl-rankings-2026">github.com/fconger2/nfl-rankings-2026</a>.</p>
+</div>
+</body>
+</html>

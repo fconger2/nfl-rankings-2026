@@ -27,6 +27,8 @@ It downloads nflverse data and uses the latest week whose games have all finishe
 - `through week` should be one higher than last week's `data/dashboard/meta.csv` (if it isn't, the data hasn't posted yet: stop and report).
 - Top-5 lists should look sensible (no blank names, no team listed twice in DEF).
 
+`run.py` also rebuilds `index.html` (the GitHub Pages site at https://fconger2.github.io/nfl-rankings-2026/), so committing publishes the site.
+
 ## 3. Commit and push
 
 ```bash

@@ -7,7 +7,7 @@
 import argparse
 import json
 
-from nfl_rankings import data, dashboard, odds, positions, qb
+from nfl_rankings import data, dashboard, odds, positions, qb, site
 from nfl_rankings.config import MODEL, SEASON
 
 
@@ -36,6 +36,7 @@ def main():
         {"season": SEASON, "through_week": week, "odds_as_of": odds_in["as_of"], "qb": qb_meta, **pos_meta}, indent=1, default=float))
 
     dashboard.write(qb_ranked, qb_proj, qb_meta, pos, pos_meta, mvp, awards, week)
+    site.build()
 
     print("\nTop 5 each:")
     print("QB ", ", ".join(qb_ranked.name.head(5)))

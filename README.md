@@ -2,7 +2,8 @@
 
 QB, RB, WR and team-defense rankings for the 2026 NFL season, built from advanced stats, plus award-odds ladders from sportsbooks and Kalshi.
 
-Live dashboard: https://claude.ai/artifact/2axP89esYs8A2ZwcBjgtwi
+**Website: https://fconger2.github.io/nfl-rankings-2026/**  
+Claude dashboard version: https://claude.ai/artifact/2axP89esYs8A2ZwcBjgtwi
 
 ## How the rankings work
 
@@ -38,6 +39,7 @@ Outputs:
 
 - `data/model/` — full model output for every group, plus `meta.json` with weights and consistency numbers
 - `data/dashboard/` — the exact CSVs the dashboard reads
+- `index.html` — the GitHub Pages site, rebuilt by `run.py` from `dashboard/index.html` + `site/shell.html`; it reads `data/dashboard/*.csv`
 - `odds/input.json` — current award odds (edit this to update ladders); each run saves a copy to `odds/history/`
 
 Settings (qualifiers, usage cap, projection prior) live in `nfl_rankings/config.py`.
