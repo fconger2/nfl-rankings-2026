@@ -1,0 +1,16 @@
+{
+  "as_of": "2026-10-12",
+  "mvp": {
+    "source": "DraftKings via Sports Illustrated, Oct 12",
+    "url": "https://www.si.com/betting/nfl-mvp-odds-brock-purdy-jumps-josh-allen-as-favorite-joe-burrow-drake-maye-rising-2026",
+    "odds": [
+      ["Brock Purdy", "SF", "QB", "+280"], ["Josh Allen", "BUF", "QB", "+300"], ["Patrick Mahomes", "KC", "QB", "+600"],
+      ["Trevor Lawrence", "JAX", "QB", "+750"], ["Joe Burrow", "CIN", "QB", "+950"], ["Lamar Jackson", "BAL", "QB", "+1100"],
+      ["Drake Maye", "NE", "QB", "+1600"], ["Dak Prescott", "DAL", "QB", "+2000"], ["Matthew Stafford", "LA", "QB", "+3000"],
+      ["Jahmyr Gibbs", "DET", "RB", "+4000"], ["Jared Goff", "DET", "QB", "+4500"], ["Bryce Young", "CAR", "QB", "+5000"],
+      ["Bijan Robinson", "ATL", "RB", "+5000"], ["Kenneth Walker III", "KC", "RB", "+5500"], ["Jordan Love", "GB", "QB", "+6000"],
+      ["Jalen Hurts", "PHI", "QB", "+6000"], ["Jaxon Smith-Njigba", "SEA", "WR", "+7000"], ["Derrick Henry", "BAL", "RB", "+8000"],
+      ["Caleb Williams", "CHI", "QB", "+8000"], ["Bo Nix", "DEN", "QB", "+9000"]
+    ]
+  }
+}

@@ -1,0 +1,821 @@
+<meta name="dash-one-writer">
+<style>
+  .qb { font-family: var(--font-anthropic-sans); display: flex; flex-direction: column; gap: var(--cds-gap-lg); }
+  .qb-head h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; }
+  .qb-take { margin: var(--cds-gap-xs) 0 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-body); }
+  .qb .qb-take b { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .qb-tabs { display: flex; gap: var(--cds-gap-xs); overflow-x: auto; border-bottom: 1px solid var(--color-border-line); }
+  .qb-tabs button { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent;
+    padding: var(--cds-pad-sm) var(--cds-pad-sm); color: var(--color-fg-muted); cursor: pointer; white-space: nowrap; }
+  .qb-tabs button[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); }
+  .qb-section { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
+  .qb-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+  .qb-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  .qb-note { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: var(--cds-gap-xs) 0 var(--cds-gap-md); }
+  .qb-scroll { overflow-x: auto; margin: 0 calc(-1 * var(--cds-pad-lg)); padding: 0 var(--cds-pad-lg); }
+  .qb table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .qb th, .qb td { padding: var(--cds-pad-xs) var(--cds-pad-sm); text-align: right; white-space: nowrap; border-bottom: 1px solid var(--color-border-line); }
+  .qb th { font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); vertical-align: bottom; }
+  .qb th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+  .qb th[aria-sort="ascending"] button, .qb th[aria-sort="descending"] button { color: var(--color-fg); }
+  .qb th[aria-sort="ascending"] button::after { content: " ▲"; font-size: 0.7em; }
+  .qb th[aria-sort="descending"] button::after { content: " ▼"; font-size: 0.7em; }
+  .qb .l { text-align: left; }
+  .qb .stick { position: sticky; left: 0; background: var(--color-panel); z-index: 1; }
+  .qb .qb-award-name { margin-bottom: var(--cds-gap-xs); }
+  .qb-award-pick { flex-wrap: wrap; }
+  .qb .qbname { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+  .qb .muted { color: var(--color-fg-muted); }
+  .qb .scorecell { display: flex; align-items: center; gap: var(--cds-gap-xs); justify-content: flex-end; min-width: 5.5rem; }
+  .qb .scorebar { height: 0.5rem; border-radius: var(--cds-radius); background: var(--cds-chart-muted); flex: 1; position: relative; overflow: hidden; }
+  .qb .scorebar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: var(--cds-radius); }
+  .qb .good { color: var(--color-ok); }
+  .qb .bad { color: var(--color-bad); }
+  .qb-chart { position: relative; min-height: 22rem; }
+  .qb-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border);
+    border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm);
+    font-size: var(--cds-font-size-caption); white-space: nowrap; }
+  .qb-tip .t { color: var(--cds-text-secondary); }
+  .qb-ctrl { display: flex; gap: var(--cds-gap-xs); margin-bottom: var(--cds-gap-md); }
+  .qb-ctrl button { font: inherit; font-size: var(--cds-font-size-caption); border: 1px solid var(--color-border-line); background: none;
+    color: var(--color-fg-muted); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; }
+  .qb-ctrl button[aria-pressed="true"] { color: var(--color-fg); border-color: var(--color-fg); }
+  .qb-method p, .qb-method li { font-size: var(--cds-font-size-body); line-height: 1.5; margin: 0 0 var(--cds-gap-sm); }
+  .qb-method ul { padding-left: 1.2rem; margin: 0; }
+  [data-dash-source-state=empty] { color: transparent; }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+
+<div class="qb">
+  <header class="qb-head">
+    <h1>2026 NFL rankings</h1>
+    <p class="qb-take">Through Week <b data-draw="week" data-source="meta" data-field="through_week">—</b>: <b data-draw="leader" data-source="qbs" data-field="qb" data-where="rank=1">—</b> tops the QBs, <b data-draw="lead-rb" data-source="rbs" data-field="player" data-where="rank=1">—</b> the RBs and <b data-draw="lead-wr" data-source="wrs" data-field="player" data-where="rank=1">—</b> the WRs, and <b data-draw="lead-def" data-source="defense" data-field="team" data-where="rank=1">—</b> has the best defense.</p>
+  </header>
+
+  <nav class="qb-tabs" role="tablist" aria-label="Sections">
+    <button role="tab" data-tab="rankings" aria-selected="true">QBs</button>
+    <button role="tab" data-tab="rbs" aria-selected="false">RBs</button>
+    <button role="tab" data-tab="wrs" aria-selected="false">WRs</button>
+    <button role="tab" data-tab="defense" aria-selected="false">Defense</button>
+    <button role="tab" data-tab="mvp" aria-selected="false">Award ladders</button>
+    <button role="tab" data-tab="basics" aria-selected="false">QB stats</button>
+    <button role="tab" data-tab="garbage" aria-selected="false">Garbage time</button>
+    <button role="tab" data-tab="projections" aria-selected="false">QB projections</button>
+    <button role="tab" data-tab="method" aria-selected="false">QB method</button>
+  </nav>
+
+  <section class="qb-section" id="rankings" data-panel="rankings">
+    <div class="qb-card">
+      <h2>QB score</h2>
+      <p class="qb-note"><span data-draw="nqbs" data-source="meta" data-field="n_qbs">—</span> QBs who have taken <span data-draw="mindb" data-source="meta" data-field="min_snap_share">—</span>%+ of their team's snaps. 50 is an average qualified QB; every 10 points is one standard deviation. The score blends his own efficiency with how good his whole offense has been. Tap a column to sort.</p>
+      <div class="qb-scroll">
+        <table data-table="rank" data-source="qbs" data-row-key="qb_id">
+          <thead><tr>
+            <th data-field="rank"><button data-sort="rank">#</button></th>
+            <th class="l stick" data-field="qb"><button data-sort="qb">QB</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="score"><button data-sort="score">Score</button></th>
+            <th data-field="adj_epa"><button data-sort="adj_epa">Adj EPA/play</button></th>
+            <th data-field="epa_play"><button data-sort="epa_play">Raw EPA/play</button></th>
+            <th data-field="cpoe"><button data-sort="cpoe">CPOE</button></th>
+            <th data-field="success"><button data-sort="success">Success %</button></th>
+            <th data-field="sack_rate"><button data-sort="sack_rate">Sack %</button></th>
+            <th data-field="to_rate"><button data-sort="to_rate">TO %</button></th>
+            <th data-field="rush_epa_g"><button data-sort="rush_epa_g">Rush EPA/g</button></th>
+            <th data-field="off_epa"><button data-sort="off_epa">Offense EPA/play</button></th>
+            <th data-field="off_success"><button data-sort="off_success">Offense success %</button></th>
+            <th data-field="run_game_epa"><button data-sort="run_game_epa">Run game EPA/play</button></th>
+            <th data-field="adot"><button data-sort="adot">aDOT</button></th>
+            <th data-field="snap_share"><button data-sort="snap_share">Snap %</button></th>
+            <th data-field="dropbacks"><button data-sort="dropbacks">Dropbacks</button></th>
+          </tr></thead>
+          <tbody data-draw="rank"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>Efficiency vs. accuracy</h2>
+      <p class="qb-note">Opponent-adjusted EPA per play against CPOE. Top-right is elite at both. Dashed lines are the group averages; the top 10 by score are labeled.</p>
+      <div class="qb-chart" data-draw="scatter" data-source="qbs"></div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="rbs" data-panel="rbs" hidden>
+    <div class="qb-card">
+      <h2>RB score</h2>
+      <p class="qb-note">Running backs with <span data-draw="rb-min" data-source="pos_meta" data-field="min_carries">—</span>+ carries. 50 is an average qualified RB; every 10 points is one standard deviation. Tap a column to sort.</p>
+      <div class="qb-scroll">
+        <table data-table="rb-rank" data-source="rbs" data-row-key="player_id">
+          <thead><tr>
+            <th class="muted" data-field="rank"><button data-sort="rank">#</button></th>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="score"><button data-sort="score">Score</button></th>
+            <th data-field="adj_rush_epa"><button data-sort="adj_rush_epa">Adj rush EPA/carry</button></th>
+            <th data-field="rush_success"><button data-sort="rush_success">Success %</button></th>
+            <th data-field="ryoe_att"><button data-sort="ryoe_att">RYOE/carry</button></th>
+            <th data-field="explosive_rate"><button data-sort="explosive_rate">10+ yd runs %</button></th>
+            <th data-field="rec_epa_g"><button data-sort="rec_epa_g">Rec EPA/g</button></th>
+            <th data-field="touches_g"><button data-sort="touches_g">Touches/g</button></th>
+            <th data-field="rush_epa"><button data-sort="rush_epa">Raw rush EPA/carry</button></th>
+            <th data-field="carries"><button data-sort="carries">Carries</button></th>
+          </tr></thead>
+          <tbody data-draw="rb-rank"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>RB stat lines</h2>
+      <p class="qb-note">Season totals so far.</p>
+      <div class="qb-scroll">
+        <table data-table="rb-basic" data-source="rbs" data-row-key="player_id">
+          <thead><tr>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games"><button data-sort="games">G</button></th>
+            <th data-field="carries"><button data-sort="carries">Car</button></th>
+            <th data-field="rush_yds"><button data-sort="rush_yds">Rush yds</button></th>
+            <th data-field="ypc"><button data-sort="ypc">YPC</button></th>
+            <th data-field="rush_td"><button data-sort="rush_td">Rush TD</button></th>
+            <th data-field="targets"><button data-sort="targets">Tgt</button></th>
+            <th data-field="rec"><button data-sort="rec">Rec</button></th>
+            <th data-field="rec_yds"><button data-sort="rec_yds">Rec yds</button></th>
+            <th data-field="rec_td"><button data-sort="rec_td">Rec TD</button></th>
+            <th data-field="scrim_yds"><button data-sort="scrim_yds">Scrimmage yds</button></th>
+            <th data-field="fum_lost"><button data-sort="fum_lost">Fum lost</button></th>
+          </tr></thead>
+          <tbody data-draw="rb-basic"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>RB projections</h2>
+      <p class="qb-note">Backs who played in their team's latest game. Per-game rates are blended with four games of the group average, times remaining games. Totals are full-season.</p>
+      <div class="qb-scroll">
+        <table data-table="rb-proj" data-source="pos_proj" data-row-key="key">
+          <thead><tr>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games_left"><button data-sort="games_left">G left</button></th>
+            <th data-field="carries_final"><button data-sort="carries_final">Car</button></th>
+            <th data-field="rush_yds_final"><button data-sort="rush_yds_final">Rush yds</button></th>
+            <th data-field="rush_td_final"><button data-sort="rush_td_final">Rush TD</button></th>
+            <th data-field="rec_final"><button data-sort="rec_final">Rec</button></th>
+            <th data-field="rec_yds_final"><button data-sort="rec_yds_final">Rec yds</button></th>
+            <th data-field="rec_td_final"><button data-sort="rec_td_final">Rec TD</button></th>
+            <th data-field="rush_yds_ros"><button data-sort="rush_yds_ros">Rush yds left</button></th>
+            <th data-field="rec_yds_ros"><button data-sort="rec_yds_ros">Rec yds left</button></th>
+          </tr></thead>
+          <tbody data-draw="rb-proj"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>What goes into the score</h2>
+      <p class="qb-note">Each stat is weighted by how consistent it's been this season (odd-week vs. even-week numbers for the same back). Usage stats are capped at 30% of the score combined, so it rewards what players do with the ball, not just how often they get it.</p>
+      <div class="qb-scroll">
+        <table data-table="w-rb" data-source="pos_weights" data-row-key="feature">
+          <thead><tr>
+            <th class="l" data-field="stat">Stat</th>
+            <th data-field="weight">Weight</th>
+            <th data-field="consistency">Consistency</th>
+          </tr></thead>
+          <tbody data-draw="w-rb"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="wrs" data-panel="wrs" hidden>
+    <div class="qb-card">
+      <h2>WR score</h2>
+      <p class="qb-note">Wide receivers with <span data-draw="wr-min" data-source="pos_meta" data-field="min_targets">—</span>+ targets. 50 is an average qualified WR; every 10 points is one standard deviation. Tap a column to sort.</p>
+      <div class="qb-scroll">
+        <table data-table="wr-rank" data-source="wrs" data-row-key="player_id">
+          <thead><tr>
+            <th class="muted" data-field="rank"><button data-sort="rank">#</button></th>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="score"><button data-sort="score">Score</button></th>
+            <th data-field="adj_epa_tgt"><button data-sort="adj_epa_tgt">Adj EPA/target</button></th>
+            <th data-field="yds_team_att"><button data-sort="yds_team_att">Yds/team att</button></th>
+            <th data-field="tgt_share"><button data-sort="tgt_share">Target share</button></th>
+            <th data-field="air_share"><button data-sort="air_share">Air yds share</button></th>
+            <th data-field="croe"><button data-sort="croe">Catch % over exp</button></th>
+            <th data-field="yacoe"><button data-sort="yacoe">YAC over exp</button></th>
+            <th data-field="tgt_success"><button data-sort="tgt_success">Success %</button></th>
+            <th data-field="epa_tgt"><button data-sort="epa_tgt">Raw EPA/target</button></th>
+            <th data-field="targets"><button data-sort="targets">Targets</button></th>
+          </tr></thead>
+          <tbody data-draw="wr-rank"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>WR stat lines</h2>
+      <p class="qb-note">Season totals so far.</p>
+      <div class="qb-scroll">
+        <table data-table="wr-basic" data-source="wrs" data-row-key="player_id">
+          <thead><tr>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games"><button data-sort="games">G</button></th>
+            <th data-field="targets"><button data-sort="targets">Tgt</button></th>
+            <th data-field="rec"><button data-sort="rec">Rec</button></th>
+            <th data-field="rec_yds"><button data-sort="rec_yds">Yds</button></th>
+            <th data-field="rec_td"><button data-sort="rec_td">TD</button></th>
+            <th data-field="catch_pct"><button data-sort="catch_pct">Catch %</button></th>
+            <th data-field="ypr"><button data-sort="ypr">Y/R</button></th>
+            <th data-field="adot"><button data-sort="adot">aDOT</button></th>
+            <th data-field="air_yds"><button data-sort="air_yds">Air yds</button></th>
+            <th data-field="yac"><button data-sort="yac">YAC</button></th>
+          </tr></thead>
+          <tbody data-draw="wr-basic"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>WR projections</h2>
+      <p class="qb-note">Receivers who played in their team's latest game. Per-game rates are blended with four games of the group average, times remaining games. Totals are full-season.</p>
+      <div class="qb-scroll">
+        <table data-table="wr-proj" data-source="pos_proj" data-row-key="key">
+          <thead><tr>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games_left"><button data-sort="games_left">G left</button></th>
+            <th data-field="targets_final"><button data-sort="targets_final">Tgt</button></th>
+            <th data-field="rec_final"><button data-sort="rec_final">Rec</button></th>
+            <th data-field="rec_yds_final"><button data-sort="rec_yds_final">Yds</button></th>
+            <th data-field="rec_td_final"><button data-sort="rec_td_final">TD</button></th>
+            <th data-field="rec_yds_ros"><button data-sort="rec_yds_ros">Yds left</button></th>
+            <th data-field="rec_td_ros"><button data-sort="rec_td_ros">TD left</button></th>
+          </tr></thead>
+          <tbody data-draw="wr-proj"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>What goes into the score</h2>
+      <p class="qb-note">Each stat is weighted by how consistent it's been this season (odd-week vs. even-week numbers for the same receiver). Usage stats are capped at 30% of the score combined, so it rewards what players do with the ball, not just how often they get it.</p>
+      <div class="qb-scroll">
+        <table data-table="w-wr" data-source="pos_weights" data-row-key="feature">
+          <thead><tr>
+            <th class="l" data-field="stat">Stat</th>
+            <th data-field="weight">Weight</th>
+            <th data-field="consistency">Consistency</th>
+          </tr></thead>
+          <tbody data-draw="w-wr"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="defense" data-panel="defense" hidden>
+    <div class="qb-card">
+      <h2>Defense score</h2>
+      <p class="qb-note">All 32 teams. 50 is an average defense; every 10 points is one standard deviation. Green is better than average for that stat, red is worse. Tap a column to sort.</p>
+      <div class="qb-scroll">
+        <table data-table="def-rank" data-source="defense" data-row-key="team">
+          <thead><tr>
+            <th class="muted" data-field="rank"><button data-sort="rank">#</button></th>
+            <th class="l stick qbname" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="score"><button data-sort="score">Score</button></th>
+            <th data-field="adj_epa_allowed"><button data-sort="adj_epa_allowed">Adj EPA/play allowed</button></th>
+            <th data-field="success_allowed"><button data-sort="success_allowed">Success % allowed</button></th>
+            <th data-field="pass_epa_allowed"><button data-sort="pass_epa_allowed">Pass EPA allowed</button></th>
+            <th data-field="rush_epa_allowed"><button data-sort="rush_epa_allowed">Rush EPA allowed</button></th>
+            <th data-field="pressure_rate"><button data-sort="pressure_rate">Pressure %</button></th>
+            <th data-field="takeaway_rate"><button data-sort="takeaway_rate">Takeaway %</button></th>
+            <th data-field="explosive_allowed"><button data-sort="explosive_allowed">Explosive % allowed</button></th>
+          </tr></thead>
+          <tbody data-draw="def-rank"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>Traditional defense stats</h2>
+      <p class="qb-note">Season so far.</p>
+      <div class="qb-scroll">
+        <table data-table="def-basic" data-source="defense" data-row-key="team">
+          <thead><tr>
+            <th class="l stick qbname" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games"><button data-sort="games">G</button></th>
+            <th data-field="ppg_allowed"><button data-sort="ppg_allowed">Pts/g allowed</button></th>
+            <th data-field="ypp_allowed"><button data-sort="ypp_allowed">Yds/play allowed</button></th>
+            <th data-field="sacks"><button data-sort="sacks">Sacks</button></th>
+            <th data-field="sack_rate"><button data-sort="sack_rate">Sack %</button></th>
+            <th data-field="takeaways"><button data-sort="takeaways">Takeaways</button></th>
+            <th data-field="third_conv"><button data-sort="third_conv">3rd-down conv %</button></th>
+            <th data-field="rz_td_rate"><button data-sort="rz_td_rate">Red zone TD %</button></th>
+          </tr></thead>
+          <tbody data-draw="def-basic"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card">
+      <h2>What goes into the score</h2>
+      <p class="qb-note">Each stat is weighted by how consistent it's been this season (odd-week vs. even-week numbers for the same defense). Opponent adjustment subtracts how efficient each offense usually is.</p>
+      <div class="qb-scroll">
+        <table data-table="w-def" data-source="pos_weights" data-row-key="feature">
+          <thead><tr>
+            <th class="l" data-field="stat">Stat</th>
+            <th data-field="weight">Weight</th>
+            <th data-field="consistency">Consistency</th>
+          </tr></thead>
+          <tbody data-draw="w-def"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="mvp" data-panel="mvp" hidden>
+    <div class="qb-card">
+      <h2>Award ladders from the books</h2>
+      <p class="qb-note">Odds with the vig removed: each implied probability is divided by the total for the listed players, so the chances add to 100%. Books only list the top of each market, so leaders' chances run a little high. Kalshi shows its price for the names it displays publicly (usually the top three); a positive "Books − Kalshi" means the sportsbooks like the player more than Kalshi does.</p>
+      <div class="qb-ctrl qb-award-pick" role="group" aria-label="Award">
+        <button data-award="mvp" aria-pressed="true">MVP</button>
+        <button data-award="opoy" aria-pressed="false">OPOY</button>
+        <button data-award="dpoy" aria-pressed="false">DPOY</button>
+        <button data-award="oroy" aria-pressed="false">OROY</button>
+        <button data-award="droy" aria-pressed="false">DROY</button>
+        <button data-award="cpoy" aria-pressed="false">Comeback</button>
+        <button data-award="coy" aria-pressed="false">Coach</button>
+      </div>
+      <div data-award-view="mvp">
+      <p class="qb-note">Books: <span data-draw="mvp-src" data-source="mvp" data-field="source" data-row="0">—</span>, with the vig removed. Kalshi: <span data-draw="mvp-ksrc" data-source="mvp" data-field="kalshi_source" data-row="0">—</span>. "Change" is the move in no-vig chance since the previous board (<span data-draw="mvp-prev" data-source="mvp" data-field="prev_as_of" data-row="0">—</span>). "Model rank" is the player's spot in the QB score (blank for non-QBs and QBs below the snap cutoff).</p>
+      <div class="qb-scroll">
+        <table data-table="mvp" data-source="mvp" data-row-key="player">
+          <thead><tr>
+            <th data-field="ladder"><button data-sort="ladder">#</button></th>
+            <th class="l stick" data-field="player"><button data-sort="player">Player</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th class="l" data-field="pos"><button data-sort="pos">Pos</button></th>
+            <th data-field="odds"><button data-sort="odds">Odds</button></th>
+            <th data-field="novig"><button data-sort="novig">No-vig chance</button></th>
+            <th data-field="kalshi"><button data-sort="kalshi">Kalshi</button></th>
+            <th data-field="gap"><button data-sort="gap">Books − Kalshi</button></th>
+            <th data-field="implied"><button data-sort="implied">With vig</button></th>
+            <th data-field="change"><button data-sort="change">Change</button></th>
+            <th data-field="odds_prev"><button data-sort="odds_prev">Prev odds</button></th>
+            <th data-field="model_rank"><button data-sort="model_rank">Model rank</button></th>
+            <th data-field="model_score"><button data-sort="model_score">Model score</button></th>
+          </tr></thead>
+          <tbody data-draw="mvp"></tbody>
+        </table>
+      </div>
+      </div>
+      <div data-award-view="other" hidden>
+        <h2 class="qb-award-name" data-draw="award-name" data-source="awards" data-field="award_name">—</h2>
+        <p class="qb-note">Books: <span data-draw="award-src" data-source="awards" data-field="source">—</span>. Kalshi: <span data-draw="award-ksrc" data-source="awards" data-field="kalshi_source">—</span>.</p>
+        <div class="qb-scroll">
+          <table data-table="awards" data-source="awards" data-row-key="key">
+            <thead><tr>
+              <th data-field="ladder"><button data-sort="ladder">#</button></th>
+              <th class="l stick" data-field="player"><button data-sort="player">Name</button></th>
+              <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+              <th data-field="odds"><button data-sort="odds">Odds</button></th>
+              <th data-field="novig"><button data-sort="novig">No-vig chance</button></th>
+              <th data-field="kalshi"><button data-sort="kalshi">Kalshi</button></th>
+              <th data-field="gap"><button data-sort="gap">Books − Kalshi</button></th>
+              <th data-field="implied"><button data-sort="implied">With vig</button></th>
+            </tr></thead>
+            <tbody data-draw="awards"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="basics" data-panel="basics" hidden>
+    <div class="qb-card">
+      <h2>Traditional stat lines</h2>
+      <p class="qb-note">Season totals so far. Rushing includes scrambles.</p>
+      <div class="qb-scroll">
+        <table data-table="basic" data-source="qbs" data-row-key="qb_id">
+          <thead><tr>
+            <th class="l stick" data-field="qb"><button data-sort="qb">QB</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games"><button data-sort="games">G</button></th>
+            <th data-field="comp"><button data-sort="comp">Cmp</button></th>
+            <th data-field="att"><button data-sort="att">Att</button></th>
+            <th data-field="comp_pct"><button data-sort="comp_pct">Cmp %</button></th>
+            <th data-field="pass_yds"><button data-sort="pass_yds">Pass yds</button></th>
+            <th data-field="pass_td"><button data-sort="pass_td">TD</button></th>
+            <th data-field="ints"><button data-sort="ints">INT</button></th>
+            <th data-field="ypa"><button data-sort="ypa">Y/A</button></th>
+            <th data-field="anya"><button data-sort="anya">ANY/A</button></th>
+            <th data-field="sacks"><button data-sort="sacks">Sacks</button></th>
+            <th data-field="rush_att"><button data-sort="rush_att">Rush att</button></th>
+            <th data-field="rush_yds"><button data-sort="rush_yds">Rush yds</button></th>
+            <th data-field="rush_td"><button data-sort="rush_td">Rush TD</button></th>
+          </tr></thead>
+          <tbody data-draw="basic"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="garbage" data-panel="garbage" hidden>
+    <div class="qb-card">
+      <h2>Garbage-time producers</h2>
+      <p class="qb-note">Garbage time is any play where the offense's win probability is under 10% or over 90%. "GT EPA" is total points added in those plays. "Boost" is how much garbage time raises (green) or lowers (red) his overall EPA per play.</p>
+      <div class="qb-scroll">
+        <table data-table="gt" data-source="qbs" data-row-key="qb_id">
+          <thead><tr>
+            <th data-field="gt_rank"><button data-sort="gt_rank">#</button></th>
+            <th class="l stick" data-field="qb"><button data-sort="qb">QB</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="gt_epa_total"><button data-sort="gt_epa_total">GT EPA</button></th>
+            <th data-field="gt_plays"><button data-sort="gt_plays">GT plays</button></th>
+            <th data-field="gt_share"><button data-sort="gt_share">% of plays</button></th>
+            <th data-field="gt_epa_play"><button data-sort="gt_epa_play">GT EPA/play</button></th>
+            <th data-field="gt_boost"><button data-sort="gt_boost">Boost</button></th>
+            <th data-field="epa_play"><button data-sort="epa_play">Overall EPA/play</button></th>
+          </tr></thead>
+          <tbody data-draw="gt"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="projections" data-panel="projections" hidden>
+    <div class="qb-card">
+      <h2>Projected stat lines</h2>
+      <p class="qb-note">Each team's current starter, including starters below the snap cutoff, assuming he starts every remaining game. Per-game rates are pulled toward the league average to account for small samples.</p>
+      <div class="qb-ctrl" role="group" aria-label="Projection window">
+        <button data-view="ros" aria-pressed="true">Rest of season</button>
+        <button data-view="final" aria-pressed="false">Full-season total</button>
+      </div>
+      <div class="qb-scroll" data-proj="ros">
+        <table data-table="ros" data-source="proj" data-row-key="qb_id">
+          <thead><tr>
+            <th class="l stick" data-field="qb"><button data-sort="qb">QB</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="games_left"><button data-sort="games_left">G left</button></th>
+            <th data-field="pass_yds_ros"><button data-sort="pass_yds_ros">Pass yds</button></th>
+            <th data-field="pass_td_ros"><button data-sort="pass_td_ros">TD</button></th>
+            <th data-field="ints_ros"><button data-sort="ints_ros">INT</button></th>
+            <th data-field="rush_yds_ros"><button data-sort="rush_yds_ros">Rush yds</button></th>
+            <th data-field="rush_td_ros"><button data-sort="rush_td_ros">Rush TD</button></th>
+          </tr></thead>
+          <tbody data-draw="ros"></tbody>
+        </table>
+      </div>
+      <div class="qb-scroll" data-proj="final" hidden>
+        <table data-table="final" data-source="proj" data-row-key="qb_id">
+          <thead><tr>
+            <th class="l stick" data-field="qb"><button data-sort="qb">QB</button></th>
+            <th class="l" data-field="team"><button data-sort="team">Team</button></th>
+            <th data-field="pass_yds_final"><button data-sort="pass_yds_final">Pass yds</button></th>
+            <th data-field="pass_td_final"><button data-sort="pass_td_final">TD</button></th>
+            <th data-field="ints_final"><button data-sort="ints_final">INT</button></th>
+            <th data-field="rush_yds_final"><button data-sort="rush_yds_final">Rush yds</button></th>
+            <th data-field="rush_td_final"><button data-sort="rush_td_final">Rush TD</button></th>
+          </tr></thead>
+          <tbody data-draw="final"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qb-section" id="method" data-panel="method" hidden>
+    <div class="qb-card">
+      <h2>What goes into the score</h2>
+      <p class="qb-note">Each stat is weighted by how consistent it's been this season: how well a QB's odd-week number matches his even-week number. Consistent stats reflect skill; noisy ones get less say.</p>
+      <div class="qb-scroll">
+        <table data-table="weights" data-source="weights" data-row-key="feature">
+          <thead><tr>
+            <th class="l" data-field="stat">Stat</th>
+            <th data-field="weight">Weight</th>
+            <th data-field="consistency">Consistency</th>
+          </tr></thead>
+          <tbody data-draw="weights"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="qb-card qb-method">
+      <h2>Method</h2>
+      <ul>
+        <li>Data: nflverse play-by-play for the 2026 regular season only.</li>
+        <li>To be ranked, a QB must have taken at least <span data-draw="mindb" data-source="meta" data-field="min_snap_share">—</span>% of his team's snaps (measured as his share of the team's dropbacks).</li>
+        <li>A QB's plays are every dropback (passes, sacks, scrambles) plus his designed runs. Kneels, spikes and two-point tries are left out.</li>
+        <li>Opponent adjustment: each play's EPA has the defense's average EPA allowed (relative to league average) subtracted, separately for dropbacks and runs.</li>
+        <li>Score: each stat becomes a z-score against the qualified QBs, the weighted z-scores are summed, and the total is rescaled so 50 is average and 10 is one standard deviation.</li>
+        <li>Offense efficiency: EPA per play on every pass and run his team ran in the games he played, so a QB on a strong unit gets credit for it. "Run game EPA/play" is the non-QB runs, shown for context only.</li>
+        <li>Turnover rate gets almost no weight because interceptions and fumbles have barely carried over from one half of the season to the other.</li>
+        <li>Projections: per-game passing and rushing rates are blended with four games of league-average QB production, then multiplied by the team's remaining games. The current starter is whoever had the most dropbacks in his team's latest game.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Tabs
+  const showTab = (name) => {
+    document.querySelectorAll('.qb-tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
+    document.querySelectorAll('[data-panel]').forEach((s) => { s.hidden = s.dataset.panel !== name; });
+    dash.setLink(name);
+  };
+  document.querySelectorAll('.qb-tabs button').forEach((b) => b.addEventListener('click', () => showTab(b.dataset.tab)));
+  const linked = location.hash.slice(1);
+  if (linked && document.querySelector(`[data-panel="${linked}"]`)) showTab(linked);
+
+  // Award picker
+  window.qbAward = 'mvp';
+  document.querySelectorAll('.qb-ctrl button[data-award]').forEach((b) => b.addEventListener('click', () => {
+    window.qbAward = b.dataset.award;
+    document.querySelectorAll('.qb-ctrl button[data-award]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll('[data-award-view]').forEach((v) => { v.hidden = v.dataset.awardView !== (b.dataset.award === 'mvp' ? 'mvp' : 'other'); });
+    if (b.dataset.award !== 'mvp') { ['awards', 'award-name', 'award-src', 'award-ksrc'].forEach((n) => dash.draw(n)); }
+  }));
+
+  // Projection window toggle
+  document.querySelectorAll('.qb-ctrl button[data-view]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.qb-ctrl button[data-view]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll('[data-proj]').forEach((d) => { d.hidden = d.dataset.proj !== b.dataset.view; });
+  }));
+</script>
+
+<script>
+  const num = (v) => (v === '' || v == null ? NaN : Number(v));
+  const f = { int: d3.format(',.0f'), d1: d3.format('.1f'), d2: d3.format('.2f'), d3: d3.format('.3f') };
+  const pct = (v) => (isNaN(v) ? '' : f.d1(v) + '%');
+  const show = (fmt) => (v) => (isNaN(v) ? '' : fmt(v));
+  const tone = (v) => (isNaN(v) || v === 0 ? '' : v > 0 ? 'good' : 'bad');
+
+  // column specs: fmt (text), text (string column), cls (extra class), tone (color by sign), score (bar)
+  const COLS = {
+    rank: { fmt: show(f.int), asc: true, cls: 'muted' }, gt_rank: { fmt: show(f.int), asc: true, cls: 'muted' },
+    qb: { text: true, asc: true, cls: 'l stick qbname' }, team: { text: true, asc: true, cls: 'l muted' },
+    score: { score: true },
+    adj_epa: { fmt: show(f.d3) }, epa_play: { fmt: show(f.d3) }, cpoe: { fmt: show(f.d1) },
+    success: { fmt: pct }, sack_rate: { fmt: pct, asc: true }, to_rate: { fmt: pct, asc: true },
+    rush_epa_g: { fmt: show(f.d2) }, adot: { fmt: show(f.d1) }, dropbacks: { fmt: show(f.int) },
+    games: { fmt: show(f.int) }, comp: { fmt: show(f.int) }, att: { fmt: show(f.int) }, comp_pct: { fmt: pct },
+    pass_yds: { fmt: show(f.int) }, pass_td: { fmt: show(f.int) }, ints: { fmt: show(f.int), asc: true },
+    ypa: { fmt: show(f.d1) }, anya: { fmt: show(f.d1) }, sacks: { fmt: show(f.int), asc: true },
+    rush_att: { fmt: show(f.int) }, rush_yds: { fmt: show(f.int) }, rush_td: { fmt: show(f.int) },
+    gt_epa_total: { fmt: show(f.d1), tone: true }, gt_plays: { fmt: show(f.int) }, gt_share: { fmt: pct },
+    gt_epa_play: { fmt: show(f.d3) }, gt_boost: { fmt: show(f.d3), tone: true },
+    games_left: { fmt: show(f.int) }, snap_share: { fmt: pct },
+    ladder: { fmt: show(f.int), asc: true, cls: 'muted' }, player: { text: true, asc: true, cls: 'l stick qbname' },
+    pos: { text: true, asc: true, cls: 'l muted' }, odds: { raw: true, asc: true }, odds_prev: { raw: true, asc: true },
+    novig: { bar: true }, implied: { fmt: pct }, change: { fmt: (v) => (isNaN(v) ? '' : (v > 0 ? '+' : '') + f.d1(v)), tone: true },
+    kalshi: { fmt: pct }, gap: { fmt: (v) => (isNaN(v) ? '' : (v > 0 ? '+' : '') + f.d1(v)) },
+    model_rank: { fmt: show(f.int), asc: true },
+    adj_rush_epa: { fmt: show(f.d3) }, rush_epa: { fmt: show(f.d3) }, rush_success: { fmt: pct }, ryoe_att: { fmt: show(f.d2) },
+    explosive_rate: { fmt: pct }, rec_epa_g: { fmt: show(f.d2) }, touches_g: { fmt: show(f.d1) }, carries: { fmt: show(f.int) },
+    ypc: { fmt: show(f.d1) }, targets: { fmt: show(f.int) }, rec: { fmt: show(f.int) }, rec_yds: { fmt: show(f.int) },
+    rec_td: { fmt: show(f.int) }, scrim_yds: { fmt: show(f.int) }, fum_lost: { fmt: show(f.int), asc: true },
+    adj_epa_tgt: { fmt: show(f.d3) }, epa_tgt: { fmt: show(f.d3) }, yds_team_att: { fmt: show(f.d2) }, tgt_share: { fmt: pct },
+    air_share: { fmt: pct }, croe: { fmt: (v) => (isNaN(v) ? '' : (v > 0 ? '+' : '') + f.d1(v)), tone: true },
+    yacoe: { fmt: (v) => (isNaN(v) ? '' : (v > 0 ? '+' : '') + f.d2(v)), tone: true }, tgt_success: { fmt: pct },
+    catch_pct: { fmt: pct }, ypr: { fmt: show(f.d1) }, air_yds: { fmt: show(f.int) }, yac: { fmt: show(f.int) },
+    adj_epa_allowed: { fmt: show(f.d3), asc: true, toneBy: true }, epa_allowed: { fmt: show(f.d3), asc: true },
+    success_allowed: { fmt: pct, asc: true, toneBy: true }, pass_epa_allowed: { fmt: show(f.d3), asc: true, toneBy: true },
+    rush_epa_allowed: { fmt: show(f.d3), asc: true, toneBy: true }, pressure_rate: { fmt: pct, toneBy: true },
+    takeaway_rate: { fmt: pct, toneBy: true }, explosive_allowed: { fmt: pct, asc: true, toneBy: true },
+    ppg_allowed: { fmt: show(f.d1), asc: true }, ypp_allowed: { fmt: show(f.d2), asc: true }, takeaways: { fmt: show(f.int) },
+    third_conv: { fmt: pct, asc: true }, rz_td_rate: { fmt: pct, asc: true }, model_score: { fmt: show(f.d1) },
+    off_epa: { fmt: show(f.d3) }, off_success: { fmt: pct }, run_game_epa: { fmt: show(f.d3) },
+  };
+  ['pass_yds', 'pass_td', 'ints', 'rush_yds', 'rush_td', 'carries', 'rec', 'rec_yds', 'rec_td', 'targets'].forEach((k) => {
+    COLS[k + '_ros'] = { ...COLS[k] }; COLS[k + '_final'] = { ...COLS[k] };
+  });
+
+  function sortableTable(name, src, key, dir, rowKey = 'qb_id', keep = () => true) {
+    const state = { key, dir };
+    const tables = () => document.querySelectorAll(`table[data-table="${name}"]`);
+    const sync = () => tables().forEach((t) => t.querySelectorAll('th').forEach((th) => {
+      th.setAttribute('aria-sort', th.dataset.field === state.key ? (state.dir > 0 ? 'ascending' : 'descending') : 'none');
+    }));
+    tables().forEach((t) => t.querySelectorAll('th button[data-sort]').forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.sort;
+      if (state.key === k) state.dir = -state.dir;
+      else { state.key = k; state.dir = COLS[k] && COLS[k].asc ? 1 : -1; }
+      sync(); dash.draw(name);
+    })));
+    sync();
+    dash.draw(name, (tb) => {
+      const d = dash.data(src);
+      if (d.status !== 'ok') { tb.replaceChildren(); return; }
+      const fields = [...tb.closest('table').querySelectorAll('thead th')].map((th) => th.dataset.field);
+      const spec = COLS[state.key] || {};
+      const rows = d.data.filter(keep).sort((a, b) => {
+        if (spec.text) return state.dir * String(a[state.key]).localeCompare(String(b[state.key]));
+        const x = num(a[state.key]), y = num(b[state.key]);
+        if (isNaN(x)) return 1; if (isNaN(y)) return -1;
+        return state.dir * (x - y);
+      });
+      const scores = d.data.map((r) => num(r.score));
+      const lo = Math.min(...scores, 20), hi = Math.max(...scores, 80);
+      tb.replaceChildren(...rows.map((r) => {
+        const tr = document.createElement('tr');
+        tr.dataset.key = r[rowKey];
+        fields.forEach((fld) => {
+          const c = COLS[fld] || {};
+          const td = document.createElement('td');
+          if (c.cls) td.className = c.cls;
+          if (c.bar) {
+            const v = num(r[fld]);
+            const max = Math.max(...d.data.filter(keep).map((x) => num(x[fld])).filter((x) => !isNaN(x)));
+            const wrap = document.createElement('div'); wrap.className = 'scorecell';
+            const bar = document.createElement('span'); bar.className = 'scorebar';
+            const fill = document.createElement('i');
+            fill.style.width = `${isNaN(v) ? 0 : (v / max) * 100}%`; fill.style.background = dash.colors[0];
+            bar.append(fill);
+            const t = document.createElement('span'); t.textContent = pct(v);
+            wrap.append(bar, t); td.append(wrap);
+          } else if (c.raw) {
+            td.textContent = r[fld] ?? '';
+          } else if (c.score) {
+            const v = num(r.score);
+            const wrap = document.createElement('div'); wrap.className = 'scorecell';
+            const bar = document.createElement('span'); bar.className = 'scorebar';
+            const fill = document.createElement('i');
+            fill.style.width = `${Math.max(0, Math.min(100, ((v - lo) / (hi - lo)) * 100))}%`;
+            fill.style.background = v >= 50 ? dash.colors[0] : 'var(--cds-chart-status-critical)';
+            bar.append(fill);
+            const t = document.createElement('span'); t.textContent = f.d1(v);
+            wrap.append(bar, t); td.append(wrap);
+          } else if (c.text) {
+            td.textContent = r[fld] ?? '';
+          } else {
+            const v = num(r[fld]);
+            td.textContent = c.fmt ? c.fmt(v) : (r[fld] ?? '');
+            if (c.tone) td.classList.add(...[tone(v)].filter(Boolean));
+            if (c.toneBy && !isNaN(v)) {
+              const avg = d3.mean(d.data, (x) => num(x[fld]));
+              td.classList.add((c.asc ? v < avg : v > avg) ? 'good' : 'bad');
+            }
+          }
+          tr.append(td);
+        });
+        return tr;
+      }));
+    });
+  }
+
+  sortableTable('rank', 'qbs', 'score', -1);
+  sortableTable('basic', 'qbs', 'pass_yds', -1);
+  sortableTable('gt', 'qbs', 'gt_epa_total', -1);
+  sortableTable('ros', 'proj', 'pass_yds_ros', -1);
+  sortableTable('final', 'proj', 'pass_yds_final', -1);
+  sortableTable('mvp', 'mvp', 'ladder', 1, 'player');
+  sortableTable('rb-rank', 'rbs', 'score', -1, 'player_id');
+  sortableTable('rb-basic', 'rbs', 'rush_yds', -1, 'player_id');
+  sortableTable('rb-proj', 'pos_proj', 'rush_yds_final', -1, 'key', (r) => r.pos === 'RB');
+  sortableTable('wr-rank', 'wrs', 'score', -1, 'player_id');
+  sortableTable('wr-basic', 'wrs', 'rec_yds', -1, 'player_id');
+  sortableTable('wr-proj', 'pos_proj', 'rec_yds_final', -1, 'key', (r) => r.pos === 'WR');
+  sortableTable('def-rank', 'defense', 'score', -1, 'team');
+  sortableTable('def-basic', 'defense', 'ppg_allowed', 1, 'team');
+  sortableTable('awards', 'awards', 'ladder', 1, 'key', (r) => r.award === window.qbAward);
+  ['award-name', 'award-src', 'award-ksrc'].forEach((nm) => dash.draw(nm, (el) => {
+    const d = dash.data('awards');
+    const row = d.status === 'ok' ? d.data.find((r) => r.award === window.qbAward) : null;
+    el.dataset.where = `award=${window.qbAward}&ladder=1`;
+    el.textContent = row ? row[el.dataset.field] : '—';
+  }));
+
+  // Header takeaway
+  const cell = (name, src, pick, field, fmt) => dash.draw(name, (el) => {
+    const d = dash.data(src);
+    const row = d.status === 'ok' ? d.data.find(pick) : null;
+    el.textContent = row ? (fmt ? fmt(row[field]) : String(row[field])) : '—';
+  });
+  cell('leader', 'qbs', (r) => String(r.rank) === '1', 'qb');
+  cell('week', 'meta', () => true, 'through_week');
+  cell('nqbs', 'meta', () => true, 'n_qbs');
+  cell('mindb', 'meta', () => true, 'min_snap_share');
+  cell('mvp-src', 'mvp', () => true, 'source');
+  cell('mvp-ksrc', 'mvp', () => true, 'kalshi_source');
+  cell('mvp-prev', 'mvp', () => true, 'prev_as_of');
+  cell('lead-rb', 'rbs', (r) => String(r.rank) === '1', 'player');
+  cell('lead-wr', 'wrs', (r) => String(r.rank) === '1', 'player');
+  cell('lead-def', 'defense', (r) => String(r.rank) === '1', 'team');
+  cell('rb-min', 'pos_meta', () => true, 'min_carries');
+  cell('wr-min', 'pos_meta', () => true, 'min_targets');
+
+  // Weight tables for RB / WR / defense
+  [['w-rb', 'RB'], ['w-wr', 'WR'], ['w-def', 'DEF']].forEach(([nm, grp]) => dash.draw(nm, (tb) => {
+    const d = dash.data('pos_weights');
+    if (d.status !== 'ok') { tb.replaceChildren(); return; }
+    const rows = d.data.filter((r) => r.group === grp).sort((a, b) => num(b.weight) - num(a.weight));
+    const max = Math.max(...rows.map((r) => num(r.weight)));
+    tb.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = r.feature;
+      const a = document.createElement('td'); a.className = 'l';
+      const nmEl = document.createElement('div'); nmEl.className = 'qbname'; nmEl.textContent = r.stat;
+      const mn = document.createElement('div'); mn.className = 'muted'; mn.textContent = r.meaning; mn.style.whiteSpace = 'normal';
+      a.append(nmEl, mn);
+      const b = document.createElement('td');
+      const wrap = document.createElement('div'); wrap.className = 'scorecell';
+      const bar = document.createElement('span'); bar.className = 'scorebar';
+      const fill = document.createElement('i'); fill.style.width = `${(num(r.weight) / max) * 100}%`; fill.style.background = dash.colors[0];
+      bar.append(fill);
+      const t = document.createElement('span'); t.textContent = pct(num(r.weight));
+      wrap.append(bar, t); b.append(wrap);
+      const c = document.createElement('td'); c.textContent = f.d2(num(r.consistency));
+      tr.append(a, b, c);
+      return tr;
+    }));
+  }));
+
+  // Weights table
+  dash.draw('weights', (tb) => {
+    const d = dash.data('weights');
+    if (d.status !== 'ok') { tb.replaceChildren(); return; }
+    const max = Math.max(...d.data.map((r) => num(r.weight)));
+    tb.replaceChildren(...d.data.slice().sort((a, b) => num(b.weight) - num(a.weight)).map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = r.feature;
+      const a = document.createElement('td'); a.className = 'l';
+      const nm = document.createElement('div'); nm.className = 'qbname'; nm.textContent = r.stat;
+      const mn = document.createElement('div'); mn.className = 'muted'; mn.textContent = r.meaning; mn.style.whiteSpace = 'normal';
+      a.append(nm, mn);
+      const b = document.createElement('td');
+      const wrap = document.createElement('div'); wrap.className = 'scorecell';
+      const bar = document.createElement('span'); bar.className = 'scorebar';
+      const fill = document.createElement('i'); fill.style.width = `${(num(r.weight) / max) * 100}%`; fill.style.background = dash.colors[0];
+      bar.append(fill);
+      const t = document.createElement('span'); t.textContent = pct(num(r.weight));
+      wrap.append(bar, t); b.append(wrap);
+      const c = document.createElement('td'); c.textContent = f.d2(num(r.consistency));
+      tr.append(a, b, c);
+      return tr;
+    }));
+  });
+
+  // Scatter: CPOE (x) vs adjusted EPA/play (y)
+  dash.draw('scatter', (el) => {
+    el.replaceChildren();
+    const d = dash.data('qbs');
+    if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const rows = d.data.map((r) => ({ qb: r.qb, team: r.team, x: num(r.cpoe), y: num(r.adj_epa), score: num(r.score), rank: num(r.rank) }))
+      .filter((r) => !isNaN(r.x) && !isNaN(r.y));
+    const W = Math.max(280, el.clientWidth), H = Math.min(440, Math.max(320, W * 0.75));
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).style('display', 'block');
+    const m = { t: 12, r: 16, b: 38, l: 48 };
+    const xe = d3.extent(rows, (r) => r.x), ye = d3.extent(rows, (r) => r.y);
+    const px = (xe[1] - xe[0]) * 0.08, py = (ye[1] - ye[0]) * 0.08;
+    const x = d3.scaleLinear([xe[0] - px, xe[1] + px], [m.l, W - m.r]);
+    const y = d3.scaleLinear([ye[0] - py, ye[1] + py], [H - m.b, m.t]);
+    const xa = svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(W < 420 ? 5 : 8).tickSizeOuter(0));
+    const ya = svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(d3.format('.2f')).tickSizeOuter(0));
+    [xa, ya].forEach((a) => {
+      a.attr('font-size', null).attr('font-family', null);
+      a.selectAll('text').style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)');
+      a.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)');
+    });
+    svg.append('text').attr('x', W - m.r).attr('y', H - 4).attr('text-anchor', 'end')
+      .style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('CPOE →');
+    svg.append('text').attr('x', 4).attr('y', m.t - 2).attr('dominant-baseline', 'hanging')
+      .attr('transform', `rotate(-90 4 ${m.t})`).attr('text-anchor', 'end')
+      .style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('Adj EPA/play →');
+    const mx = d3.mean(rows, (r) => r.x), my = d3.mean(rows, (r) => r.y);
+    svg.append('line').attr('x1', x(mx)).attr('x2', x(mx)).attr('y1', m.t).attr('y2', H - m.b)
+      .style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 4');
+    svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(my)).attr('y2', y(my))
+      .style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 4');
+    const top = new Set(rows.filter((r) => r.rank <= 10).map((r) => r.qb));
+    const dots = svg.append('g').selectAll('circle').data(rows).join('circle')
+      .attr('cx', (r) => x(r.x)).attr('cy', (r) => y(r.y)).attr('r', (r) => (top.has(r.qb) ? 5 : 4))
+      .style('fill', (r) => (top.has(r.qb) ? dash.colors[0] : 'var(--cds-chart-muted)'))
+      .style('stroke', 'var(--color-panel)').attr('stroke-width', 1);
+    // labels for top 10, nudged apart vertically
+    const labels = rows.filter((r) => top.has(r.qb)).map((r) => ({ ...r, ly: y(r.y) - 8 }))
+      .sort((a, b) => a.ly - b.ly);
+    for (let i = 1; i < labels.length; i++) {
+      for (let j = 0; j < i; j++) {
+        const a = labels[j], b = labels[i];
+        if (Math.abs(x(a.x) - x(b.x)) < 70 && Math.abs(a.ly - b.ly) < 12) b.ly = a.ly + 12;
+      }
+    }
+    svg.append('g').selectAll('text').data(labels).join('text')
+      .attr('x', (r) => x(r.x)).attr('y', (r) => r.ly)
+      .attr('text-anchor', (r) => (x(r.x) > W - 70 ? 'end' : x(r.x) < m.l + 30 ? 'start' : 'middle'))
+      .style('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text((r) => r.qb);
+    // tooltip via nearest point
+    const tip = document.createElement('div'); tip.className = 'qb-tip'; tip.style.display = 'none'; el.append(tip);
+    const tipName = document.createElement('div'); tipName.className = 't';
+    const tipLine = document.createElement('div');
+    tip.append(tipName, tipLine);
+    const delaunay = d3.Delaunay.from(rows, (r) => x(r.x), (r) => y(r.y));
+    const ring = svg.append('circle').attr('r', 8).style('fill', 'none').style('stroke', dash.colors[0]).attr('stroke-width', 2).style('display', 'none');
+    const move = (ev) => {
+      const [sx, sy] = d3.pointer(ev, svg.node());
+      const r = rows[delaunay.find(sx, sy)];
+      if (!r) return;
+      ring.style('display', null).attr('cx', x(r.x)).attr('cy', y(r.y));
+      tipName.textContent = `#${r.rank} ${r.qb} · ${r.team}`;
+      tipLine.textContent = `Adj EPA ${f.d3(r.y)} · CPOE ${f.d1(r.x)} · Score ${f.d1(r.score)}`;
+      tip.style.display = 'block';
+      const scale = el.clientWidth / W;
+      const left = Math.min(Math.max(0, x(r.x) * scale - tip.offsetWidth / 2), el.clientWidth - tip.offsetWidth);
+      const topPx = y(r.y) * scale - tip.offsetHeight - 12;
+      tip.style.left = `${left}px`; tip.style.top = `${topPx < 0 ? y(r.y) * scale + 14 : topPx}px`;
+    };
+    svg.on('pointermove', move).on('pointerdown', move)
+      .on('pointerleave', () => { tip.style.display = 'none'; ring.style('display', 'none'); });
+  });
+</script>

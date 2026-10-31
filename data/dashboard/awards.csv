@@ -1,0 +1,58 @@
+key,award,award_name,source,ladder,player,team,odds,implied,novig,kalshi,kalshi_source,gap
+opoy:Jahmyr Gibbs,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",1,Jahmyr Gibbs,DET,+250,28.6,27.0,25.0,"Kalshi market page, Oct 28",2.0
+opoy:Kenneth Walker III,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",2,Kenneth Walker III,KC,+280,26.3,24.9,,"Kalshi market page, Oct 28",
+opoy:Jaxon Smith-Njigba,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",3,Jaxon Smith-Njigba,SEA,+450,18.2,17.2,27.0,"Kalshi market page, Oct 28",-9.8
+opoy:Bijan Robinson,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",4,Bijan Robinson,ATL,+650,13.3,12.6,,"Kalshi market page, Oct 28",
+opoy:Puka Nacua,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",5,Puka Nacua,LAR,+2500,3.8,3.6,,"Kalshi market page, Oct 28",
+opoy:Josh Allen,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",6,Josh Allen,BUF,+2800,3.4,3.3,,"Kalshi market page, Oct 28",
+opoy:Ja'Marr Chase,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",7,Ja'Marr Chase,CIN,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
+opoy:Christian McCaffrey,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",8,Christian McCaffrey,SF,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
+opoy:Malik Nabers,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",9,Malik Nabers,NYG,+3500,2.8,2.6,,"Kalshi market page, Oct 28",
+opoy:Jonathan Taylor,opoy,Offensive Player of the Year,"DraftKings via ESPN, Oct 26",10,Jonathan Taylor,IND,+3500,2.8,2.6,,"Kalshi market page, Oct 28",
+dpoy:Will Anderson Jr.,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",1,Will Anderson Jr.,HOU,+200,33.3,31.7,22.0,"Kalshi market page, Oct 28",9.7
+dpoy:T.J. Watt,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",2,T.J. Watt,PIT,+700,12.5,11.9,,"Kalshi market page, Oct 28",
+dpoy:Dallas Turner,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",3,Dallas Turner,MIN,+750,11.8,11.2,,"Kalshi market page, Oct 28",
+dpoy:Fred Warner,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",4,Fred Warner,SF,+750,11.8,11.2,12.0,"Kalshi market page, Oct 28",-0.8
+dpoy:Greg Rousseau,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",5,Greg Rousseau,BUF,+800,11.1,10.6,,"Kalshi market page, Oct 28",
+dpoy:Aidan Hutchinson,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",6,Aidan Hutchinson,DET,+1000,9.1,8.6,14.0,"Kalshi market page, Oct 28",-5.4
+dpoy:Dexter Lawrence II,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",7,Dexter Lawrence II,CIN,+1800,5.3,5.0,,"Kalshi market page, Oct 28",
+dpoy:Maxx Crosby,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",8,Maxx Crosby,LV,+2500,3.8,3.7,,"Kalshi market page, Oct 28",
+dpoy:Nik Bonitto,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",9,Nik Bonitto,DEN,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
+dpoy:Jeffery Simmons,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",10,Jeffery Simmons,TEN,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
+oroy:Carnell Tate,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",1,Carnell Tate,TEN,+270,27.0,25.6,22.0,"Kalshi market page, Oct 28",3.6
+oroy:KC Concepcion,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",2,KC Concepcion,CLE,+600,14.3,13.5,12.0,"Kalshi market page, Oct 28",1.5
+oroy:Jeremiyah Love,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",3,Jeremiyah Love,ARI,+700,12.5,11.8,,"Kalshi market page, Oct 28",
+oroy:Fernando Mendoza,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",4,Fernando Mendoza,LV,+700,12.5,11.8,,"Kalshi market page, Oct 28",
+oroy:Denzel Boston,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",5,Denzel Boston,CLE,+700,12.5,11.8,13.0,"Kalshi market page, Oct 28",-1.2
+oroy:Omar Cooper Jr.,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",6,Omar Cooper Jr.,NYJ,+1000,9.1,8.6,,"Kalshi market page, Oct 28",
+oroy:Germie Bernard,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",7,Germie Bernard,PIT,+1200,7.7,7.3,,"Kalshi market page, Oct 28",
+oroy:Antonio Williams,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",8,Antonio Williams,WSH,+2800,3.4,3.3,,"Kalshi market page, Oct 28",
+oroy:Caleb Douglas,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",9,Caleb Douglas,MIA,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
+oroy:Ja'Kobi Lane,oroy,Offensive Rookie of the Year,"DraftKings via ESPN, Oct 26",10,Ja'Kobi Lane,BAL,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
+droy:David Bailey,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",1,David Bailey,NYJ,+190,34.5,31.2,25.0,"Kalshi market page, Oct 28",6.2
+droy:Arvell Reese,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",2,Arvell Reese,NYG,+250,28.6,25.8,30.0,"Kalshi market page, Oct 28",-4.2
+droy:Jacob Rodriguez,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",3,Jacob Rodriguez,MIA,+550,15.4,13.9,,"Kalshi market page, Oct 28",
+droy:Sonny Styles,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",4,Sonny Styles,WSH,+800,11.1,10.0,15.0,"Kalshi market page, Oct 28",-5.0
+droy:Dillon Thieneman,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",5,Dillon Thieneman,CHI,+2000,4.8,4.3,,"Kalshi market page, Oct 28",
+droy:Mansoor Delane,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",6,Mansoor Delane,KC,+2200,4.3,3.9,,"Kalshi market page, Oct 28",
+droy:Caleb Downs,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",7,Caleb Downs,DAL,+3000,3.2,2.9,,"Kalshi market page, Oct 28",
+droy:Anthony Hill Jr.,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",8,Anthony Hill Jr.,TEN,+3000,3.2,2.9,,"Kalshi market page, Oct 28",
+droy:Rueben Bain Jr.,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",9,Rueben Bain Jr.,TB,+3500,2.8,2.5,,"Kalshi market page, Oct 28",
+droy:Akheem Mesidor,droy,Defensive Rookie of the Year,"DraftKings via ESPN, Oct 26",10,Akheem Mesidor,LAC,+3500,2.8,2.5,,"Kalshi market page, Oct 28",
+cpoy:Patrick Mahomes,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",1,Patrick Mahomes,KC,-126,55.8,65.6,45.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",20.6
+cpoy:Malik Nabers,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",2,Malik Nabers,NYG,+867,10.3,12.2,19.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",-6.8
+cpoy:Kyler Murray,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",3,Kyler Murray,MIN,+1217,7.6,8.9,5.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",3.9
+cpoy:Fred Warner,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",4,Fred Warner,SF,+1433,6.5,7.7,5.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",2.7
+cpoy:George Kittle,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",5,George Kittle,SF,+2000,4.8,5.6,8.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",-2.4
+cpoy:Deshaun Watson,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",,Deshaun Watson,CLE,,,,8.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",
+cpoy:Michael Penix Jr.,cpoy,Comeback Player of the Year,"Multi-book consensus via SportsBettingDime, Oct 27",,Michael Penix Jr.,ATL,,,,7.0,"Kalshi last trades, Oct 27 (via CryptoStruct)",
+coy:John Harbaugh,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",1,John Harbaugh,NYG,+330,23.3,21.2,23.0,"Kalshi market page, Oct 28",-1.8
+coy:Todd Monken,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",2,Todd Monken,CLE,+400,20.0,18.3,22.0,"Kalshi market page, Oct 28",-3.7
+coy:Kevin O'Connell,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",3,Kevin O'Connell,MIN,+600,14.3,13.0,,"Kalshi market page, Oct 28",
+coy:Ben Johnson,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",4,Ben Johnson,CHI,+600,14.3,13.0,,"Kalshi market page, Oct 28",
+coy:Kyle Shanahan,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",5,Kyle Shanahan,SF,+600,14.3,13.0,,"Kalshi market page, Oct 28",
+coy:Joe Brady,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",6,Joe Brady,BUF,+1800,5.3,4.8,,"Kalshi market page, Oct 28",
+coy:Klint Kubiak,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",7,Klint Kubiak,LV,+2000,4.8,4.3,,"Kalshi market page, Oct 28",
+coy:Andy Reid,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",8,Andy Reid,KC,+2000,4.8,4.3,,"Kalshi market page, Oct 28",
+coy:Liam Coen,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",9,Liam Coen,JAX,+2000,4.8,4.3,,"Kalshi market page, Oct 28",
+coy:Kevin Stefanski,coy,Coach of the Year,"DraftKings via ESPN, Oct 26",10,Kevin Stefanski,ATL,+2500,3.8,3.5,,"Kalshi market page, Oct 28",

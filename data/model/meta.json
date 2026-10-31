@@ -1,0 +1,94 @@
+{
+ "season": 2026,
+ "through_week": 7,
+ "odds_as_of": "2026-10-27",
+ "qb": {
+  "weights": {
+   "adj_epa": 0.2126,
+   "cpoe": 0.1425,
+   "success": 0.2023,
+   "sack_rate": 0.1204,
+   "to_rate": 0.0213,
+   "rush_epa_g": 0.1158,
+   "off_epa": 0.1851
+  },
+  "reliability": {
+   "adj_epa": 0.3840933639221574,
+   "cpoe": 0.3349783825660082,
+   "success": 0.4756600389048722,
+   "sack_rate": 0.2831349321348811,
+   "to_rate": 0.020014641818268383,
+   "rush_epa_g": 0.2722691730885386,
+   "off_epa": 0.43524236969902574
+  },
+  "reliability_n": 33,
+  "min_snap_share": 0.66,
+  "n": 28
+ },
+ "rb": {
+  "weights": {
+   "adj_rush_epa": 0.2314,
+   "rush_success": 0.154,
+   "ryoe_att": 0.1447,
+   "explosive_rate": 0.1538,
+   "rec_epa_g": 0.0356,
+   "touches_g": 0.2805
+  },
+  "reliability": {
+   "adj_rush_epa": 0.3685791060524744,
+   "rush_success": 0.33289465561619264,
+   "ryoe_att": 0.31267861426204396,
+   "explosive_rate": 0.33232714017593856,
+   "rec_epa_g": 0.0770134864895027,
+   "touches_g": 0.6063081302189781
+  },
+  "reliability_n": 35,
+  "min": 50,
+  "n": 39
+ },
+ "wr": {
+  "weights": {
+   "adj_epa_tgt": 0.2662,
+   "yds_team_att": 0.2743,
+   "tgt_share": 0.1393,
+   "air_share": 0.1607,
+   "croe": 0.0266,
+   "yacoe": 0.0429,
+   "tgt_success": 0.09
+  },
+  "reliability": {
+   "adj_epa_tgt": 0.10972929037106592,
+   "yds_team_att": 0.5151213391742109,
+   "tgt_share": 0.5213739887725058,
+   "air_share": 0.6012487176855825,
+   "croe": 0.0,
+   "yacoe": 0.08050310392523478,
+   "tgt_success": 0.16899467081212305
+  },
+  "reliability_n": 55,
+  "min": 30,
+  "n": 53
+ },
+ "def": {
+  "weights": {
+   "adj_epa_allowed": 0.3718,
+   "success_allowed": 0.1511,
+   "pass_epa_allowed": 0.1117,
+   "rush_epa_allowed": 0.0372,
+   "pressure_rate": 0.237,
+   "takeaway_rate": 0.0372,
+   "explosive_allowed": 0.0541
+  },
+  "reliability": {
+   "adj_epa_allowed": 0.10284121492371422,
+   "success_allowed": 0.20317596368898486,
+   "pass_epa_allowed": 0.15020600484400054,
+   "rush_epa_allowed": 0.0,
+   "pressure_rate": 0.31875361958950316,
+   "takeaway_rate": 0.0,
+   "explosive_allowed": 0.0726946376100757
+  },
+  "reliability_n": 32,
+  "n": 32
+ }
+}
