@@ -1,92 +1,92 @@
 {
  "season": 2026,
- "through_week": 7,
- "odds_as_of": "2026-10-27",
+ "through_week": 8,
+ "odds_as_of": "2026-11-02",
  "qb": {
   "weights": {
-   "adj_epa": 0.2126,
-   "cpoe": 0.1425,
-   "success": 0.2023,
-   "sack_rate": 0.1204,
-   "to_rate": 0.0213,
-   "rush_epa_g": 0.1158,
-   "off_epa": 0.1851
+   "adj_epa": 0.2036,
+   "cpoe": 0.139,
+   "success": 0.1876,
+   "sack_rate": 0.1674,
+   "to_rate": 0.0204,
+   "rush_epa_g": 0.0921,
+   "off_epa": 0.1899
   },
   "reliability": {
-   "adj_epa": 0.3840933639221574,
-   "cpoe": 0.3349783825660082,
-   "success": 0.4756600389048722,
-   "sack_rate": 0.2831349321348811,
-   "to_rate": 0.020014641818268383,
-   "rush_epa_g": 0.2722691730885386,
-   "off_epa": 0.43524236969902574
+   "adj_epa": 0.33857445811929937,
+   "cpoe": 0.3412875806453663,
+   "success": 0.46074503929977323,
+   "sack_rate": 0.41109376215702004,
+   "to_rate": 0.0,
+   "rush_epa_g": 0.22612295712876443,
+   "off_epa": 0.46623396265460365
   },
   "reliability_n": 33,
   "min_snap_share": 0.66,
-  "n": 28
+  "n": 27
  },
  "rb": {
   "weights": {
-   "adj_rush_epa": 0.2314,
-   "rush_success": 0.154,
-   "ryoe_att": 0.1447,
-   "explosive_rate": 0.1538,
-   "rec_epa_g": 0.0356,
-   "touches_g": 0.2805
+   "adj_rush_epa": 0.2183,
+   "rush_success": 0.0976,
+   "ryoe_att": 0.1659,
+   "explosive_rate": 0.1627,
+   "rec_epa_g": 0.0688,
+   "touches_g": 0.2867
   },
   "reliability": {
-   "adj_rush_epa": 0.3685791060524744,
-   "rush_success": 0.33289465561619264,
-   "ryoe_att": 0.31267861426204396,
-   "explosive_rate": 0.33232714017593856,
-   "rec_epa_g": 0.0770134864895027,
-   "touches_g": 0.6063081302189781
+   "adj_rush_epa": 0.12469468784053085,
+   "rush_success": 0.22361457433290774,
+   "ryoe_att": 0.3801322223480157,
+   "explosive_rate": 0.3726748256708614,
+   "rec_epa_g": 0.1575866895657652,
+   "touches_g": 0.6566614044079281
   },
-  "reliability_n": 35,
+  "reliability_n": 39,
   "min": 50,
-  "n": 39
+  "n": 42
  },
  "wr": {
   "weights": {
-   "adj_epa_tgt": 0.2662,
-   "yds_team_att": 0.2743,
-   "tgt_share": 0.1393,
-   "air_share": 0.1607,
-   "croe": 0.0266,
-   "yacoe": 0.0429,
-   "tgt_success": 0.09
+   "adj_epa_tgt": 0.2864,
+   "yds_team_att": 0.2785,
+   "tgt_share": 0.147,
+   "air_share": 0.153,
+   "croe": 0.0286,
+   "yacoe": 0.0286,
+   "tgt_success": 0.0778
   },
   "reliability": {
-   "adj_epa_tgt": 0.10972929037106592,
-   "yds_team_att": 0.5151213391742109,
-   "tgt_share": 0.5213739887725058,
-   "air_share": 0.6012487176855825,
+   "adj_epa_tgt": 0.021579128458503266,
+   "yds_team_att": 0.4862146674908316,
+   "tgt_share": 0.6177470179455158,
+   "air_share": 0.6429287220981854,
    "croe": 0.0,
-   "yacoe": 0.08050310392523478,
-   "tgt_success": 0.16899467081212305
+   "yacoe": 0.01307385095748076,
+   "tgt_success": 0.1357623208293852
   },
-  "reliability_n": 55,
+  "reliability_n": 62,
   "min": 30,
-  "n": 53
+  "n": 58
  },
  "def": {
   "weights": {
-   "adj_epa_allowed": 0.3718,
-   "success_allowed": 0.1511,
-   "pass_epa_allowed": 0.1117,
-   "rush_epa_allowed": 0.0372,
-   "pressure_rate": 0.237,
-   "takeaway_rate": 0.0372,
-   "explosive_allowed": 0.0541
+   "adj_epa_allowed": 0.3427,
+   "success_allowed": 0.091,
+   "pass_epa_allowed": 0.1822,
+   "rush_epa_allowed": 0.0343,
+   "pressure_rate": 0.2813,
+   "takeaway_rate": 0.0343,
+   "explosive_allowed": 0.0343
   },
   "reliability": {
-   "adj_epa_allowed": 0.10284121492371422,
-   "success_allowed": 0.20317596368898486,
-   "pass_epa_allowed": 0.15020600484400054,
+   "adj_epa_allowed": 0.271474624062304,
+   "success_allowed": 0.13270845972607223,
+   "pass_epa_allowed": 0.26574300661943095,
    "rush_epa_allowed": 0.0,
-   "pressure_rate": 0.31875361958950316,
+   "pressure_rate": 0.4104298920128403,
    "takeaway_rate": 0.0,
-   "explosive_allowed": 0.0726946376100757
+   "explosive_allowed": 0.03153791460636146
   },
   "reliability_n": 32,
   "n": 32

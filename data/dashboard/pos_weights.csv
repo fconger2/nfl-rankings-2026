@@ -1,21 +1,21 @@
 feature,group,stat,meaning,weight,consistency
-adj_epa_allowed,DEF,Opponent-adjusted EPA/play allowed,Points allowed per play vs. what those offenses usually manage (lower is better),37.2,0.1
-pressure_rate,DEF,Pressure rate,Sacks plus QB hits per dropback,23.7,0.32
-success_allowed,DEF,Success rate allowed,Share of opponent plays that gain positive EPA (lower is better),15.1,0.2
-pass_epa_allowed,DEF,Pass EPA/dropback allowed,Lower is better,11.2,0.15
-explosive_allowed,DEF,Explosive plays allowed,Share of plays gaining 20+ through the air or 10+ on the ground (lower is better),5.4,0.07
-rush_epa_allowed,DEF,Rush EPA/carry allowed,Lower is better,3.7,0.0
-takeaway_rate,DEF,Takeaway rate,Interceptions plus fumble recoveries per play,3.7,0.0
-touches_g,RB,Touches per game,Carries plus catches: his role in the offense,28.1,0.61
-adj_rush_epa,RB,Opponent-adjusted rush EPA/carry,Points added per carry vs. what that defense usually allows on runs,23.1,0.37
-rush_success,RB,Rush success rate,Share of carries that gain positive EPA,15.4,0.33
-explosive_rate,RB,Explosive run rate,Share of carries going 10+ yards,15.4,0.33
-ryoe_att,RB,Rush yards over expected/carry,Next Gen Stats: yards beyond what blocking and defenders' positions predicted,14.5,0.31
-rec_epa_g,RB,Receiving EPA per game,Points added on targets,3.6,0.08
-yds_team_att,WR,Yards per team pass attempt,Receiving yards divided by his team's pass attempts in his games (a stand-in for yards per route run),27.4,0.52
-adj_epa_tgt,WR,Opponent-adjusted EPA/target,Points added per target vs. what that pass defense usually allows,26.6,0.11
-air_share,WR,Air yards share,Share of team air yards in his games,16.1,0.6
-tgt_share,WR,Target share,Share of team targets in his games,13.9,0.52
-tgt_success,WR,Success rate per target,Share of targets that gain positive EPA,9.0,0.17
-yacoe,WR,YAC over expected,"Yards after catch beyond the expected amount, per catch",4.3,0.08
-croe,WR,Catch rate over expected,Catch rate above what throw difficulty predicts,2.7,0.0
+adj_epa_allowed,DEF,Opponent-adjusted EPA/play allowed,Points allowed per play vs. what those offenses usually manage (lower is better),34.3,0.27
+pressure_rate,DEF,Pressure rate,Sacks plus QB hits per dropback,28.1,0.41
+pass_epa_allowed,DEF,Pass EPA/dropback allowed,Lower is better,18.2,0.27
+success_allowed,DEF,Success rate allowed,Share of opponent plays that gain positive EPA (lower is better),9.1,0.13
+rush_epa_allowed,DEF,Rush EPA/carry allowed,Lower is better,3.4,0.0
+takeaway_rate,DEF,Takeaway rate,Interceptions plus fumble recoveries per play,3.4,0.0
+explosive_allowed,DEF,Explosive plays allowed,Share of plays gaining 20+ through the air or 10+ on the ground (lower is better),3.4,0.03
+touches_g,RB,Touches per game,Carries plus catches: his role in the offense,28.7,0.66
+adj_rush_epa,RB,Opponent-adjusted rush EPA/carry,Points added per carry vs. what that defense usually allows on runs,21.8,0.12
+ryoe_att,RB,Rush yards over expected/carry,Next Gen Stats: yards beyond what blocking and defenders' positions predicted,16.6,0.38
+explosive_rate,RB,Explosive run rate,Share of carries going 10+ yards,16.3,0.37
+rush_success,RB,Rush success rate,Share of carries that gain positive EPA,9.8,0.22
+rec_epa_g,RB,Receiving EPA per game,Points added on targets,6.9,0.16
+adj_epa_tgt,WR,Opponent-adjusted EPA/target,Points added per target vs. what that pass defense usually allows,28.6,0.02
+yds_team_att,WR,Yards per team pass attempt,Receiving yards divided by his team's pass attempts in his games (a stand-in for yards per route run),27.9,0.49
+air_share,WR,Air yards share,Share of team air yards in his games,15.3,0.64
+tgt_share,WR,Target share,Share of team targets in his games,14.7,0.62
+tgt_success,WR,Success rate per target,Share of targets that gain positive EPA,7.8,0.14
+croe,WR,Catch rate over expected,Catch rate above what throw difficulty predicts,2.9,0.0
+yacoe,WR,YAC over expected,"Yards after catch beyond the expected amount, per catch",2.9,0.01
