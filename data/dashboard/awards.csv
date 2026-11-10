@@ -1,45 +1,43 @@
 key,award,award_name,source,ladder,player,team,odds,implied,novig,kalshi,kalshi_source,gap
-opoy:Jahmyr Gibbs,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",1,Jahmyr Gibbs,DET,+150,40.0,36.3,25.0,"Kalshi market page, Oct 28",11.3
-opoy:Jaxon Smith-Njigba,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",2,Jaxon Smith-Njigba,SEA,+330,23.3,21.1,27.0,"Kalshi market page, Oct 28",-5.9
-opoy:Kenneth Walker III,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",3,Kenneth Walker III,KC,+550,15.4,14.0,,"Kalshi market page, Oct 28",
-opoy:Bijan Robinson,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",4,Bijan Robinson,ATL,+1000,9.1,8.3,,"Kalshi market page, Oct 28",
-opoy:Josh Allen,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",5,Josh Allen,BUF,+2000,4.8,4.3,,"Kalshi market page, Oct 28",
-opoy:Puka Nacua,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",6,Puka Nacua,LAR,+2200,4.3,4.0,,"Kalshi market page, Oct 28",
-opoy:CeeDee Lamb,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",7,CeeDee Lamb,DAL,+3500,2.8,2.5,,"Kalshi market page, Oct 28",
-opoy:Malik Nabers,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",8,Malik Nabers,NYG,+3500,2.8,2.5,,"Kalshi market page, Oct 28",
-opoy:Jonathan Taylor,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",9,Jonathan Taylor,IND,+3500,2.8,2.5,,"Kalshi market page, Oct 28",
-opoy:Ja'Marr Chase,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",10,Ja'Marr Chase,CIN,+4000,2.4,2.2,,"Kalshi market page, Oct 28",
-opoy:Brock Bowers,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 1",11,Brock Bowers,LV,+4000,2.4,2.2,,"Kalshi market page, Oct 28",
-dpoy:Will Anderson Jr.,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",1,Will Anderson Jr.,HOU,+200,33.3,31.7,22.0,"Kalshi market page, Oct 28",9.7
-dpoy:T.J. Watt,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",2,T.J. Watt,PIT,+700,12.5,11.9,,"Kalshi market page, Oct 28",
-dpoy:Dallas Turner,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",3,Dallas Turner,MIN,+750,11.8,11.2,,"Kalshi market page, Oct 28",
-dpoy:Fred Warner,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",4,Fred Warner,SF,+750,11.8,11.2,12.0,"Kalshi market page, Oct 28",-0.8
-dpoy:Greg Rousseau,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",5,Greg Rousseau,BUF,+800,11.1,10.6,,"Kalshi market page, Oct 28",
-dpoy:Aidan Hutchinson,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",6,Aidan Hutchinson,DET,+1000,9.1,8.6,14.0,"Kalshi market page, Oct 28",-5.4
-dpoy:Dexter Lawrence II,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",7,Dexter Lawrence II,CIN,+1800,5.3,5.0,,"Kalshi market page, Oct 28",
-dpoy:Maxx Crosby,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",8,Maxx Crosby,LV,+2500,3.8,3.7,,"Kalshi market page, Oct 28",
-dpoy:Nik Bonitto,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",9,Nik Bonitto,DEN,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
-dpoy:Jeffery Simmons,dpoy,Defensive Player of the Year,"DraftKings via ESPN, Oct 26",10,Jeffery Simmons,TEN,+3000,3.2,3.1,,"Kalshi market page, Oct 28",
-oroy:Carnell Tate,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",1,Carnell Tate,TEN,+475,17.4,19.6,22.0,"Kalshi market page, Oct 28",-2.4
-oroy:Denzel Boston,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",2,Denzel Boston,CLE,+600,14.3,16.1,13.0,"Kalshi market page, Oct 28",3.1
-oroy:Jonah Coleman,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",3,Jonah Coleman,DEN,+700,12.5,14.1,,"Kalshi market page, Oct 28",
-oroy:KC Concepcion,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",4,KC Concepcion,CLE,+750,11.8,13.2,12.0,"Kalshi market page, Oct 28",1.2
-oroy:Jeremiyah Love,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",5,Jeremiyah Love,ARI,+1200,7.7,8.6,,"Kalshi market page, Oct 28",
-oroy:Fernando Mendoza,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",6,Fernando Mendoza,LV,+1500,6.2,7.0,,"Kalshi market page, Oct 28",
-oroy:Mike Washington Jr.,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",7,Mike Washington Jr.,LV,+2000,4.8,5.4,,"Kalshi market page, Oct 28",
-oroy:Germie Bernard,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",8,Germie Bernard,PIT,+2000,4.8,5.4,,"Kalshi market page, Oct 28",
-oroy:Omar Cooper Jr.,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",9,Omar Cooper Jr.,NYJ,+2000,4.8,5.4,,"Kalshi market page, Oct 28",
-oroy:Carson Beck,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",10,Carson Beck,ARI,+2000,4.8,5.4,,"Kalshi market page, Oct 28",
-droy:Arvell Reese,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",1,Arvell Reese,NYG,+220,31.2,27.9,29.0,"Kalshi market page, Nov 3",-1.1
-droy:David Bailey,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",2,David Bailey,NYJ,+300,25.0,22.3,20.0,"Kalshi market page, Nov 3",2.3
-droy:Jacob Rodriguez,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",3,Jacob Rodriguez,MIA,+450,18.2,16.2,14.0,"Kalshi market page, Nov 3",2.2
-droy:Sonny Styles,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",4,Sonny Styles,WSH,+700,12.5,11.2,,"Kalshi market page, Nov 3",
-droy:Gabe Jacas,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",5,Gabe Jacas,NE,+1200,7.7,6.9,,"Kalshi market page, Nov 3",
-droy:Dillon Thieneman,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",6,Dillon Thieneman,CHI,+2000,4.8,4.3,,"Kalshi market page, Nov 3",
-droy:Mansoor Delane,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",7,Mansoor Delane,KC,+2500,3.8,3.4,,"Kalshi market page, Nov 3",
-droy:Anthony Hill Jr.,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",8,Anthony Hill Jr.,TEN,+3000,3.2,2.9,,"Kalshi market page, Nov 3",
-droy:Rueben Bain Jr.,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",9,Rueben Bain Jr.,TB,+3500,2.8,2.5,,"Kalshi market page, Nov 3",
-droy:Akheem Mesidor,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 3",10,Akheem Mesidor,LAC,+3500,2.8,2.5,,"Kalshi market page, Nov 3",
+opoy:Jahmyr Gibbs,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",1,Jahmyr Gibbs,DET,+170,37.0,32.0,33.0,"Kalshi market page, Nov 10",-1.0
+opoy:Jaxon Smith-Njigba,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",2,Jaxon Smith-Njigba,SEA,+220,31.2,27.0,28.0,"Kalshi market page, Nov 10",-1.0
+opoy:Kenneth Walker III,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",3,Kenneth Walker III,KC,+450,18.2,15.7,18.0,"Kalshi market page, Nov 10",-2.3
+opoy:Bijan Robinson,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",4,Bijan Robinson,ATL,+1500,6.2,5.4,,"Kalshi market page, Nov 10",
+opoy:Ja'Marr Chase,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",5,Ja'Marr Chase,CIN,+1800,5.3,4.5,,"Kalshi market page, Nov 10",
+opoy:Josh Allen,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",6,Josh Allen,BUF,+2200,4.3,3.8,,"Kalshi market page, Nov 10",
+opoy:Puka Nacua,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",7,Puka Nacua,LAR,+3000,3.2,2.8,,"Kalshi market page, Nov 10",
+opoy:CeeDee Lamb,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",8,CeeDee Lamb,DAL,+3000,3.2,2.8,,"Kalshi market page, Nov 10",
+opoy:Christian McCaffrey,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",9,Christian McCaffrey,SF,+4000,2.4,2.1,,"Kalshi market page, Nov 10",
+opoy:Brock Bowers,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",10,Brock Bowers,LV,+4000,2.4,2.1,,"Kalshi market page, Nov 10",
+opoy:Jonathan Taylor,opoy,Offensive Player of the Year,"DraftKings via VegasInsider, Nov 9",11,Jonathan Taylor,IND,+4500,2.2,1.9,,"Kalshi market page, Nov 10",
+dpoy:Will Anderson Jr.,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",1,Will Anderson Jr.,HOU,+130,43.5,42.5,34.0,"Kalshi market page, Nov 10",8.5
+dpoy:Fred Warner,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",2,Fred Warner,SF,+600,14.3,14.0,21.0,"Kalshi market page, Nov 10",-7.0
+dpoy:Jeffery Simmons,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",3,Jeffery Simmons,CHI,+800,11.1,10.9,9.0,"Kalshi market page, Nov 10",1.9
+dpoy:T.J. Watt,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",4,T.J. Watt,PIT,+1000,9.1,8.9,,"Kalshi market page, Nov 10",
+dpoy:Aidan Hutchinson,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",5,Aidan Hutchinson,DET,+1300,7.1,7.0,,"Kalshi market page, Nov 10",
+dpoy:Dallas Turner,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",6,Dallas Turner,MIN,+1500,6.2,6.1,,"Kalshi market page, Nov 10",
+dpoy:Greg Rousseau,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",7,Greg Rousseau,BUF,+1500,6.2,6.1,,"Kalshi market page, Nov 10",
+dpoy:Dexter Lawrence II,dpoy,Defensive Player of the Year,"DraftKings via VegasInsider, Nov 9",8,Dexter Lawrence II,CIN,+2000,4.8,4.7,,"Kalshi market page, Nov 10",
+oroy:Denzel Boston,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",1,Denzel Boston,CLE,+370,21.3,20.5,13.0,"Kalshi market page, Oct 28",7.5
+oroy:Carnell Tate,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",2,Carnell Tate,TEN,+425,19.0,18.3,22.0,"Kalshi market page, Oct 28",-3.7
+oroy:Jonah Coleman,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",3,Jonah Coleman,DEN,+600,14.3,13.7,,"Kalshi market page, Oct 28",
+oroy:KC Concepcion,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",4,KC Concepcion,CLE,+600,14.3,13.7,12.0,"Kalshi market page, Oct 28",1.7
+oroy:Caleb Douglas,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",5,Caleb Douglas,MIA,+1000,9.1,8.7,,"Kalshi market page, Oct 28",
+oroy:Carson Beck,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",6,Carson Beck,ARI,+1600,5.9,5.7,,"Kalshi market page, Oct 28",
+oroy:Omar Cooper Jr.,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",7,Omar Cooper Jr.,NYJ,+1800,5.3,5.1,,"Kalshi market page, Oct 28",
+oroy:Mike Washington Jr.,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",8,Mike Washington Jr.,LV,+1800,5.3,5.1,,"Kalshi market page, Oct 28",
+oroy:Fernando Mendoza,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",9,Fernando Mendoza,LV,+2000,4.8,4.6,,"Kalshi market page, Oct 28",
+oroy:Makai Lemon,oroy,Offensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",10,Makai Lemon,PHI,+2000,4.8,4.6,,"Kalshi market page, Oct 28",
+droy:Arvell Reese,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",1,Arvell Reese,NYG,+100,50.0,39.8,29.0,"Kalshi market page, Nov 3",10.8
+droy:David Bailey,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",2,David Bailey,NYJ,+250,28.6,22.8,20.0,"Kalshi market page, Nov 3",2.8
+droy:Jacob Rodriguez,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",3,Jacob Rodriguez,MIA,+800,11.1,8.9,14.0,"Kalshi market page, Nov 3",-5.1
+droy:Sonny Styles,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",4,Sonny Styles,WSH,+800,11.1,8.9,,"Kalshi market page, Nov 3",
+droy:Gabe Jacas,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",5,Gabe Jacas,NE,+1500,6.2,5.0,,"Kalshi market page, Nov 3",
+droy:Dillon Thieneman,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",6,Dillon Thieneman,CHI,+2000,4.8,3.8,,"Kalshi market page, Nov 3",
+droy:Caleb Downs,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",7,Caleb Downs,DAL,+2500,3.8,3.1,,"Kalshi market page, Nov 3",
+droy:Mansoor Delane,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",8,Mansoor Delane,KC,+2500,3.8,3.1,,"Kalshi market page, Nov 3",
+droy:Anthony Hill Jr.,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",9,Anthony Hill Jr.,TEN,+3000,3.2,2.6,,"Kalshi market page, Nov 3",
+droy:Akheem Mesidor,droy,Defensive Rookie of the Year,"DraftKings via VegasInsider, Nov 10",10,Akheem Mesidor,LAC,+3500,2.8,2.2,,"Kalshi market page, Nov 3",
 cpoy:Patrick Mahomes,cpoy,Comeback Player of the Year,"DraftKings via VegasInsider, Nov 3",1,Patrick Mahomes,KC,-150,60.0,47.6,50.0,"Kalshi market page, Nov 3",-2.4
 cpoy:Malik Nabers,cpoy,Comeback Player of the Year,"DraftKings via VegasInsider, Nov 3",2,Malik Nabers,NYG,+380,20.8,16.5,18.0,"Kalshi market page, Nov 3",-1.5
 cpoy:Travis Hunter,cpoy,Comeback Player of the Year,"DraftKings via VegasInsider, Nov 3",3,Travis Hunter,JAX,+1000,9.1,7.2,,"Kalshi market page, Nov 3",

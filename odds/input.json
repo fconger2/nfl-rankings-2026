@@ -1,73 +1,73 @@
 {
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-09",
   "mvp": {
-    "source": "DraftKings via VegasInsider, Nov 2",
-    "url": "https://www.vegasinsider.com/nfl/odds/mvp/",
+    "source": "DraftKings via Sports Illustrated, Nov 9",
+    "url": "https://www.si.com/betting/nfl-mvp-odds-joe-burrow-climbs-into-tie-with-josh-allen-jordan-love-skyrockets-drake-maye-tanks-week-9",
     "odds": [
       [
         "Josh Allen",
         "BUF",
         "QB",
-        "+140"
+        "+240"
       ],
       [
         "Joe Burrow",
         "CIN",
         "QB",
-        "+425"
+        "+240"
       ],
       [
         "Brock Purdy",
         "SF",
         "QB",
-        "+425"
-      ],
-      [
-        "Trevor Lawrence",
-        "JAX",
-        "QB",
-        "+850"
-      ],
-      [
-        "Caleb Williams",
-        "CHI",
-        "QB",
-        "+1200"
-      ],
-      [
-        "Patrick Mahomes",
-        "KC",
-        "QB",
-        "+1400"
-      ],
-      [
-        "Drake Maye",
-        "NE",
-        "QB",
-        "+1400"
+        "+450"
       ],
       [
         "Jordan Love",
         "GB",
         "QB",
-        "+2500"
+        "+650"
+      ],
+      [
+        "Trevor Lawrence",
+        "JAX",
+        "QB",
+        "+900"
+      ],
+      [
+        "Caleb Williams",
+        "CHI",
+        "QB",
+        "+1000"
+      ],
+      [
+        "Patrick Mahomes",
+        "KC",
+        "QB",
+        "+3000"
       ],
       [
         "Jared Goff",
         "DET",
         "QB",
-        "+3000"
+        "+4500"
+      ],
+      [
+        "Drake Maye",
+        "NE",
+        "QB",
+        "+4500"
       ],
       [
         "Jahmyr Gibbs",
         "DET",
         "RB",
-        "+6000"
+        "+5500"
       ],
       [
-        "Matthew Stafford",
-        "LA",
-        "QB",
+        "Kenneth Walker III",
+        "KC",
+        "RB",
         "+6500"
       ],
       [
@@ -75,238 +75,215 @@
         "SEA",
         "WR",
         "+7500"
-      ],
-      [
-        "C.J. Stroud",
-        "HOU",
-        "QB",
-        "+7500"
-      ],
-      [
-        "Kenneth Walker III",
-        "KC",
-        "RB",
-        "+10000"
-      ],
-      [
-        "Dak Prescott",
-        "DAL",
-        "QB",
-        "+10000"
       ]
     ]
   },
   "awards": {
     "opoy": {
       "name": "Offensive Player of the Year",
-      "source": "DraftKings via VegasInsider, Nov 1",
+      "source": "DraftKings via VegasInsider, Nov 9",
       "url": "https://www.vegasinsider.com/nfl/odds/player-of-the-year/",
       "odds": [
         [
           "Jahmyr Gibbs",
           "DET",
-          "+150"
+          "+170"
         ],
         [
           "Jaxon Smith-Njigba",
           "SEA",
-          "+330"
+          "+220"
         ],
         [
           "Kenneth Walker III",
           "KC",
-          "+550"
+          "+450"
         ],
         [
           "Bijan Robinson",
           "ATL",
-          "+1000"
-        ],
-        [
-          "Josh Allen",
-          "BUF",
-          "+2000"
-        ],
-        [
-          "Puka Nacua",
-          "LAR",
-          "+2200"
-        ],
-        [
-          "CeeDee Lamb",
-          "DAL",
-          "+3500"
-        ],
-        [
-          "Malik Nabers",
-          "NYG",
-          "+3500"
-        ],
-        [
-          "Jonathan Taylor",
-          "IND",
-          "+3500"
+          "+1500"
         ],
         [
           "Ja'Marr Chase",
           "CIN",
+          "+1800"
+        ],
+        [
+          "Josh Allen",
+          "BUF",
+          "+2200"
+        ],
+        [
+          "Puka Nacua",
+          "LAR",
+          "+3000"
+        ],
+        [
+          "CeeDee Lamb",
+          "DAL",
+          "+3000"
+        ],
+        [
+          "Christian McCaffrey",
+          "SF",
           "+4000"
         ],
         [
           "Brock Bowers",
           "LV",
           "+4000"
+        ],
+        [
+          "Jonathan Taylor",
+          "IND",
+          "+4500"
         ]
       ]
     },
     "dpoy": {
       "name": "Defensive Player of the Year",
-      "source": "DraftKings via ESPN, Oct 26",
-      "url": "https://www.espn.com/espn/betting/story/_/id/48476156/2026-nfl-awards-betting-odds-mvp-rookie-year-offensive-defensive-player-coach",
+      "source": "DraftKings via VegasInsider, Nov 9",
+      "url": "https://www.vegasinsider.com/nfl/odds/player-of-the-year/",
       "odds": [
         [
           "Will Anderson Jr.",
           "HOU",
-          "+200"
-        ],
-        [
-          "T.J. Watt",
-          "PIT",
-          "+700"
-        ],
-        [
-          "Dallas Turner",
-          "MIN",
-          "+750"
+          "+130"
         ],
         [
           "Fred Warner",
           "SF",
-          "+750"
+          "+600"
         ],
         [
-          "Greg Rousseau",
-          "BUF",
+          "Jeffery Simmons",
+          "CHI",
           "+800"
+        ],
+        [
+          "T.J. Watt",
+          "PIT",
+          "+1000"
         ],
         [
           "Aidan Hutchinson",
           "DET",
-          "+1000"
+          "+1300"
+        ],
+        [
+          "Dallas Turner",
+          "MIN",
+          "+1500"
+        ],
+        [
+          "Greg Rousseau",
+          "BUF",
+          "+1500"
         ],
         [
           "Dexter Lawrence II",
           "CIN",
-          "+1800"
-        ],
-        [
-          "Maxx Crosby",
-          "LV",
-          "+2500"
-        ],
-        [
-          "Nik Bonitto",
-          "DEN",
-          "+3000"
-        ],
-        [
-          "Jeffery Simmons",
-          "TEN",
-          "+3000"
+          "+2000"
         ]
       ]
     },
     "oroy": {
       "name": "Offensive Rookie of the Year",
-      "source": "DraftKings via VegasInsider, Nov 3",
+      "source": "DraftKings via VegasInsider, Nov 10",
       "url": "https://www.vegasinsider.com/nfl/odds/rookie-of-the-year/",
       "odds": [
         [
-          "Carnell Tate",
-          "TEN",
-          "+475"
-        ],
-        [
           "Denzel Boston",
           "CLE",
-          "+600"
+          "+370"
+        ],
+        [
+          "Carnell Tate",
+          "TEN",
+          "+425"
         ],
         [
           "Jonah Coleman",
           "DEN",
-          "+700"
+          "+600"
         ],
         [
           "KC Concepcion",
           "CLE",
-          "+750"
+          "+600"
         ],
         [
-          "Jeremiyah Love",
-          "ARI",
-          "+1200"
-        ],
-        [
-          "Fernando Mendoza",
-          "LV",
-          "+1500"
-        ],
-        [
-          "Mike Washington Jr.",
-          "LV",
-          "+2000"
-        ],
-        [
-          "Germie Bernard",
-          "PIT",
-          "+2000"
-        ],
-        [
-          "Omar Cooper Jr.",
-          "NYJ",
-          "+2000"
+          "Caleb Douglas",
+          "MIA",
+          "+1000"
         ],
         [
           "Carson Beck",
           "ARI",
+          "+1600"
+        ],
+        [
+          "Omar Cooper Jr.",
+          "NYJ",
+          "+1800"
+        ],
+        [
+          "Mike Washington Jr.",
+          "LV",
+          "+1800"
+        ],
+        [
+          "Fernando Mendoza",
+          "LV",
+          "+2000"
+        ],
+        [
+          "Makai Lemon",
+          "PHI",
           "+2000"
         ]
       ]
     },
     "droy": {
       "name": "Defensive Rookie of the Year",
-      "source": "DraftKings via VegasInsider, Nov 3",
+      "source": "DraftKings via VegasInsider, Nov 10",
       "url": "https://www.vegasinsider.com/nfl/odds/rookie-of-the-year/",
       "odds": [
         [
           "Arvell Reese",
           "NYG",
-          "+220"
+          "+100"
         ],
         [
           "David Bailey",
           "NYJ",
-          "+300"
+          "+250"
         ],
         [
           "Jacob Rodriguez",
           "MIA",
-          "+450"
+          "+800"
         ],
         [
           "Sonny Styles",
           "WSH",
-          "+700"
+          "+800"
         ],
         [
           "Gabe Jacas",
           "NE",
-          "+1200"
+          "+1500"
         ],
         [
           "Dillon Thieneman",
           "CHI",
           "+2000"
+        ],
+        [
+          "Caleb Downs",
+          "DAL",
+          "+2500"
         ],
         [
           "Mansoor Delane",
@@ -317,11 +294,6 @@
           "Anthony Hill Jr.",
           "TEN",
           "+3000"
-        ],
-        [
-          "Rueben Bain Jr.",
-          "TB",
-          "+3500"
         ],
         [
           "Akheem Mesidor",
@@ -442,29 +414,42 @@
   },
   "kalshi": {
     "mvp": {
-      "source": "Kalshi market page, Nov 3",
-      "url": "https://kalshi.com/markets/kxnflmvp/ap-pro-football-regular-season-mvp/kxnflmvp-27",
+      "source": "Kalshi MVP odds page, Nov 9",
+      "url": "https://kalshi.com/nfl/mvp-odds",
       "chance": {
-        "Josh Allen": 33,
-        "Joe Burrow": 19,
-        "Brock Purdy": 14
+        "Joe Burrow": 33,
+        "Josh Allen": 25,
+        "Jordan Love": 17,
+        "Brock Purdy": 16,
+        "Trevor Lawrence": 8,
+        "Caleb Williams": 4,
+        "C.J. Stroud": 2,
+        "Jaxon Smith-Njigba": 2,
+        "Patrick Mahomes": 2
+      },
+      "teams": {
+        "C.J. Stroud": "HOU"
       }
     },
     "opoy": {
-      "source": "Kalshi market page, Oct 28",
+      "source": "Kalshi market page, Nov 10",
       "url": "https://kalshi.com/markets/kx/test/kxnflopoty-27",
       "chance": {
-        "Jaxon Smith-Njigba": 27,
-        "Jahmyr Gibbs": 25
+        "Jahmyr Gibbs": 33,
+        "Jaxon Smith-Njigba": 28,
+        "Kenneth Walker III": 18
       }
     },
     "dpoy": {
-      "source": "Kalshi market page, Oct 28",
-      "url": "https://kalshi.com/markets/kxnfldpoty/event/kxnfldpoty-27",
+      "source": "Kalshi market page, Nov 10",
+      "url": "https://kalshi.com/markets/KXNFLDPOTY/x/KXNFLDPOTY-27",
       "chance": {
-        "Will Anderson Jr.": 22,
-        "Aidan Hutchinson": 14,
-        "Fred Warner": 12
+        "Will Anderson Jr.": 34,
+        "Fred Warner": 21,
+        "Jeffery Simmons": 9
+      },
+      "teams": {
+        "Jeffery Simmons": "CHI"
       }
     },
     "oroy": {
